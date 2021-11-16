@@ -25,7 +25,8 @@ COPY root/ /
 
 RUN set -xe \
     && chmod 755 /entrypoint.sh \
-    && chmod 755 /generate_trojan_config.sh
+    && chmod 755 /generate_trojan_config.sh \
+    && chmod 755 /restart_trojan_server.sh
 
 ENV ACME_EMAIL=""
 ENV TROJAN_DOMAIN=""
