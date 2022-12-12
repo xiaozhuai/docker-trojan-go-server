@@ -9,7 +9,7 @@ docker run -d \
     --name trojan-go-server \
     -p 80:80 \
     -p 443:443 \
-    -e ACME_EMAIL="my@example.com" \
+    -e LEGO_EMAIL="my@example.com" \
     -e TROJAN_DOMAIN="demo.example.com" \
     -e TROJAN_PASSWORD="your_password" \
     xiaozhuai/trojan-go-server:latest
@@ -23,7 +23,7 @@ docker run -d \
     --name trojan-go-server \
     -p 80:80 \
     -p 443:443 \
-    -e ACME_EMAIL="my@example.com" \
+    -e LEGO_EMAIL="my@example.com" \
     -e TROJAN_DOMAIN="demo.example.com" \
     -e TROJAN_PASSWORD="your_password" \
     -e TROJAN_WS_PATH="/ws" \

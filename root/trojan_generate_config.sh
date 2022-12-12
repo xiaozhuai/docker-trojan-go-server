@@ -5,7 +5,7 @@ echo "- Generate trojan-go config"
 
 if [ "${TROJAN_WS_PATH}" = '' ]; then
 
-tee /etc/trojan-go-server.yaml <<EOF
+tee /etc/trojan-go/config.yaml <<EOF
 run-type: server
 local-addr: 0.0.0.0
 local-port: 443
@@ -28,7 +28,7 @@ EOF
 
 else
 
-tee /etc/trojan-go-server.yaml <<EOF
+tee /etc/trojan-go/config.yaml <<EOF
 run-type: server
 local-addr: 0.0.0.0
 local-port: 443

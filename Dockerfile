@@ -1,34 +1,39 @@
-FROM alpine:latest
+FROM golang:alpine AS builder
 
-RUN set -xe \
-    && apk add --no-cache curl nginx \
-    && mkdir /tmp/downloads \
-    && cd /tmp/downloads \
-    && wget "https://github.com/ochinchina/supervisord/releases/download/v0.7.3/supervisord_0.7.3_Linux_64-bit.tar.gz" \
-    && tar -xzf supervisord_0.7.3_Linux_64-bit.tar.gz \
-    && cp supervisord_0.7.3_Linux_64-bit/supervisord_static /usr/local/bin/supervisord \
-    && wget "https://github.com/go-acme/lego/releases/download/v4.5.3/lego_v4.5.3_linux_amd64.tar.gz" \
-    && tar -xzf lego_v4.5.3_linux_amd64.tar.gz \
-    && cp lego /usr/local/bin/lego \
-    && wget "https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip" \
-    && unzip trojan-go-linux-amd64.zip \
-    && cp trojan-go /usr/local/bin/trojan-go \
+ENV GO111MODULE on
+ENV CGO_ENABLED 0
+
+RUN apk --no-cache add make git wget
+
+RUN set -ex \
     && mkdir /usr/share/trojan-go \
-    && mv geo*.dat /usr/share/trojan-go/ \
-    && cd / \
-    && rm -rf /tmp/downloads \
-    && chmod 755 /usr/local/bin/supervisord \
-    && chmod 755 /usr/local/bin/lego \
-    && chmod 755 /usr/local/bin/trojan-go
+    && wget https://github.com/v2fly/domain-list-community/raw/release/dlc.dat -O /usr/share/trojan-go/geosite.dat \
+    && wget https://github.com/v2fly/geoip/raw/release/geoip.dat -O /usr/share/trojan-go/geoip.dat \
+    && wget https://github.com/v2fly/geoip/raw/release/geoip-only-cn-private.dat -O /usr/share/trojan-go/geoip-only-cn-private.dat \
+    && mkdir /code \
+    && cd /code \
+    && git clone https://github.com/p4gefau1t/trojan-go \
+    && cd /code/trojan-go \
+    && go mod download
 
+RUN set -ex \
+    && cd /code/trojan-go \
+    && make
+
+FROM xiaozhuai/supervisord-go-alpine:latest
+
+COPY --from=builder /code/trojan-go/build/trojan-go /usr/bin/trojan-go
+COPY --from=builder /usr/share/trojan-go /usr/share/trojan-go
+COPY --from=goacme/lego:latest /usr/bin/lego /usr/bin/lego
 COPY root/ /
 
-RUN set -xe \
-    && chmod 755 /entrypoint.sh \
-    && chmod 755 /generate_trojan_config.sh \
-    && chmod 755 /restart_trojan_server.sh
+RUN set -ex \
+    && apk --no-cache add ca-certificates tzdata curl nginx \
+    && update-ca-certificates \
+    && mkdir /etc/trojan-go
 
-ENV ACME_EMAIL=""
+ENV LEGO_EMAIL=""
+ENV LEGO_CHALLENGE_OPTIONS="--http"
 ENV TROJAN_DOMAIN=""
 ENV TROJAN_PASSWORD=""
 ENV TROJAN_WS_PATH=""
