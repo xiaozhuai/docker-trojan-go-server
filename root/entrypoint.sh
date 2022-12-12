@@ -20,6 +20,7 @@ if [ ! -e /root/.lego/certificates/${TROJAN_DOMAIN}.crt ]; then
   cd /root
 
   echo "- Obtain ssl certificate"
+  nginx
   /usr/bin/lego -a --email "${LEGO_EMAIL}" --domains "${TROJAN_DOMAIN}" ${LEGO_CHALLENGE_OPTIONS} run --run-hook="/trojan_generate_config.sh"
 
   echo "- Add renew certificate cron job"
@@ -30,4 +31,5 @@ if [ ! -e /root/.lego/certificates/${TROJAN_DOMAIN}.crt ]; then
 fi
 
 echo "- Starting services"
+killall nginx
 /usr/bin/supervisord -c /etc/supervisord.conf

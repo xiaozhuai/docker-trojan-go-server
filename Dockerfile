@@ -22,18 +22,20 @@ RUN set -ex \
 
 FROM xiaozhuai/supervisord-go-alpine:latest
 
+RUN set -ex \
+    && apk --no-cache add ca-certificates tzdata curl nginx \
+    && update-ca-certificates \
+    && rm -rf /var/www/* \
+    && rm -rf /etc/nginx/http.d/* \
+    && mkdir /etc/trojan-go
+
 COPY --from=builder /code/trojan-go/build/trojan-go /usr/bin/trojan-go
 COPY --from=builder /usr/share/trojan-go /usr/share/trojan-go
 COPY --from=goacme/lego:latest /usr/bin/lego /usr/bin/lego
 COPY root/ /
 
-RUN set -ex \
-    && apk --no-cache add ca-certificates tzdata curl nginx \
-    && update-ca-certificates \
-    && mkdir /etc/trojan-go
-
 ENV LEGO_EMAIL=""
-ENV LEGO_CHALLENGE_OPTIONS="--http"
+ENV LEGO_CHALLENGE_OPTIONS="--http --http.webroot /var/www"
 ENV TROJAN_DOMAIN=""
 ENV TROJAN_PASSWORD=""
 ENV TROJAN_WS_PATH=""
