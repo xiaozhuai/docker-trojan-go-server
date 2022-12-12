@@ -31,7 +31,7 @@ RUN set -ex \
 
 COPY --from=builder /code/trojan-go/build/trojan-go /usr/bin/trojan-go
 COPY --from=builder /usr/share/trojan-go /usr/share/trojan-go
-COPY --from=goacme/lego:latest /usr/bin/lego /usr/bin/lego
+COPY --from=xiaozhuai/lego-alpine:latest /usr/bin/lego /usr/bin/lego
 COPY root/ /
 
 ENV LEGO_EMAIL=""
