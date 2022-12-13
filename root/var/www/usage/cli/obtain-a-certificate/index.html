@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>Obtain a Certificate :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
     <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/usage/cli/obtain-a-certificate/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -107,7 +107,7 @@
   
     
     <li data-nav-id="/lego/usage/" title="Usage" class="dd-item
-        
+        parent
         
         
         ">
@@ -138,7 +138,7 @@
   
     
     <li data-nav-id="/lego/usage/cli/" title="CLI" class="dd-item
-        
+        parent
         
         
         ">
@@ -187,7 +187,7 @@
  
   
     
-      <li data-nav-id="/lego/usage/cli/obtain-a-certificate/" title="Obtain a Certificate" class="dd-item ">
+      <li data-nav-id="/lego/usage/cli/obtain-a-certificate/" title="Obtain a Certificate" class="dd-item active">
         <a href="/lego/usage/cli/obtain-a-certificate/">
         Obtain a Certificate
         <i class="fas fa-check read-icon"></i>
@@ -2696,48 +2696,166 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/usage/'>Usage</a> > <a href='/lego/usage/cli/'>CLI</a> > Obtain a Certificate
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#using-the-built-in-web-server">Using the built-in web server</a></li>
+    <li><a href="#using-a-dns-provider">Using a DNS provider</a></li>
+    <li><a href="#using-a-custom-certificate-signing-request-csr">Using a custom certificate signing request (CSR)</a></li>
+    <li><a href="#using-an-existing-running-web-server">Using an existing, running web server</a></li>
+    <li><a href="#running-a-script-afterward">Running a script afterward</a>
+      <ul>
+        <li><a href="#use-case">Use case</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Obtain a Certificate
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
+<p>This guide explains various ways to obtain a new certificate.</p>
+<h2 id="using-the-built-in-web-server">Using the built-in web server</h2>
+<p>Open a terminal, and execute the following command (insert your own email address and domain):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lego --email<span class="o">=</span><span class="s2">&#34;you@example.com&#34;</span> --domains<span class="o">=</span><span class="s2">&#34;example.com&#34;</span> --http run
+</span></span></code></pre></div><p>You will find your certificate in the <code>.lego</code> folder of the current working directory:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ls -1 ./.lego/certificates
+</span></span><span class="line"><span class="cl"><span class="go">example.com.crt
+</span></span></span><span class="line"><span class="cl"><span class="go">example.com.issuer.crt
+</span></span></span><span class="line"><span class="cl"><span class="go">example.com.json
+</span></span></span><span class="line"><span class="cl"><span class="go">example.com.key
+</span></span></span><span class="line"><span class="cl"><span class="go">[maybe more files for different domains...]
+</span></span></span></code></pre></div><p>where</p>
 <ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
+<li><code>example.com.crt</code> is the server certificate (including the CA certificate),</li>
+<li><code>example.com.key</code> is the private key needed for the server certificate,</li>
+<li><code>example.com.issuer.crt</code> is the CA certificate, and</li>
+<li><code>example.com.json</code> contains some JSON encoded meta information.</li>
+</ul>
+<p>For each domain, you will have a set of these four files.
+For wildcard certificates (<code>*.example.com</code>), the filenames will look like <code>_.example.com.crt</code>.</p>
+<p>The <code>.crt</code> and <code>.key</code> files are PEM-encoded x509 certificates and private keys.
+If you&rsquo;re looking for a <code>cert.pem</code> and <code>privkey.pem</code>, you can just use <code>example.com.crt</code> and <code>example.com.key</code>.</p>
+<h2 id="using-a-dns-provider">Using a DNS provider</h2>
+<p>If you can&rsquo;t or don&rsquo;t want to start a web server, you need to use a DNS provider.
+lego comes with <a href="/lego/dns/#dns-providers">support for many</a> providers,
+and you need to pick the one where your domain&rsquo;s DNS settings are set up.
+Typically, this is the registrar where you bought the domain, but in some cases this can be another third-party provider.</p>
+<p>For this example, let&rsquo;s assume you have setup CloudFlare for your domain.</p>
+<p>Execute this command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">CLOUDFLARE_EMAIL</span><span class="o">=</span><span class="s2">&#34;you@example.com&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">CLOUDFLARE_API_KEY</span><span class="o">=</span><span class="s2">&#34;yourprivatecloudflareapikey&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>lego --email <span class="s2">&#34;you@example.com&#34;</span> --dns cloudflare --domains <span class="s2">&#34;example.org&#34;</span> run
+</span></span></code></pre></div><h2 id="using-a-custom-certificate-signing-request-csr">Using a custom certificate signing request (CSR)</h2>
+<p>The first step in the process of obtaining certificates involves creating a signing request.
+This CSR bundles various information, including the domain name(s) and a public key.
+By default, lego will hide this step from you, but if you already have a CSR, you can easily reuse it:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lego --email<span class="o">=</span><span class="s2">&#34;you@example.com&#34;</span> --http --csr<span class="o">=</span><span class="s2">&#34;/path/to/csr.pem&#34;</span> run
+</span></span></code></pre></div><p>lego will infer the domains to be validated based on the contents of the CSR, so make sure the CSR&rsquo;s Common Name and optional SubjectAltNames are set correctly.</p>
+<h2 id="using-an-existing-running-web-server">Using an existing, running web server</h2>
+<p>If you have an existing server running on port 80, the <code>--http</code> option also requires the <code>--http.webroot</code> option.
+This just writes the http-01 challenge token to the given directory in the folder <code>.well-known/acme-challenge</code> and does not start a server.</p>
+<p>The given directory <strong>should</strong> be publicly served as <code>/</code> on the domain(s) for the validation to complete.</p>
+<p>If the given directory is not publicly served you will have to support rewriting the request to the directory;</p>
+<p>You could also implement a rewrite to rewrite <code>.well-known/acme-challenge</code> to the given directory <code>.well-known/acme-challenge</code>.</p>
+<p>You should be able to run an existing webserver on port 80 and have lego write the token file with the HTTP-01 challenge key authorization to <code>&lt;webroot dir&gt;/.well-known/acme-challenge/</code> by running something like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lego --accept-tos --email you@example.com --http --http.webroot /path/to/webroot --domains example.com run
+</span></span></code></pre></div><h2 id="running-a-script-afterward">Running a script afterward</h2>
+<p>You can easily hook into the certificate-obtaining process by providing the path to a script:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lego --email<span class="o">=</span><span class="s2">&#34;you@example.com&#34;</span> --domains<span class="o">=</span><span class="s2">&#34;example.com&#34;</span> --http run --run-hook<span class="o">=</span><span class="s2">&#34;./myscript.sh&#34;</span>
+</span></span></code></pre></div><p>Some information is provided through environment variables:</p>
 <ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
+<li><code>LEGO_ACCOUNT_EMAIL</code>: the email of the account.</li>
+<li><code>LEGO_CERT_DOMAIN</code>: the main domain of the certificate.</li>
+<li><code>LEGO_CERT_PATH</code>: the path of the certificate.</li>
+<li><code>LEGO_CERT_KEY_PATH</code>: the path of the certificate key.</li>
 </ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
-</ul>
+<h3 id="use-case">Use case</h3>
+<p>A typical use case is distribute the certificate for other services and reload them if necessary.
+Since PEM-formatted TLS certificates are understood by many programs, it is relatively simple to use certificates for more than a web server.</p>
+<p>This example script installs the new certificate for a mail server, and reloads it.
+Beware: this is just a starting point, error checking is omitted for brevity.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1"># copy certificates to a directory controlled by Postfix</span>
+</span></span><span class="line"><span class="cl"><span class="nv">postfix_cert_dir</span><span class="o">=</span><span class="s2">&#34;/etc/postfix/certificates&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># our Postfix server only handles mail for @example.com domain</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$LEGO_CERT_DOMAIN</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;example.com&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  install -u postfix -g postfix -m <span class="m">0644</span> <span class="s2">&#34;</span><span class="nv">$LEGO_CERT_PATH</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$postfix_cert_dir</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">  install -u postfix -g postfix -m <span class="m">0640</span> <span class="s2">&#34;</span><span class="nv">$LEGO_KEY_PATH</span><span class="s2">&#34;</span>  <span class="s2">&#34;</span><span class="nv">$postfix_cert_dir</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  systemctl reload postfix@-service
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span></code></pre></div>
+
+<footer class="footline">
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2788,6 +2906,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2803,6 +2922,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2815,6 +2935,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -2832,6 +2955,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2847,6 +2971,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4814,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/usage/cli/general-instructions/" title="General Instructions"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/usage/cli/renew-a-certificate/" title="Renew a Certificate" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

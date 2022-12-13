@@ -9,25 +9,25 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>Google Cloud :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
-    <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/fontawesome-all.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hybrid.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/featherlight.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/perfect-scrollbar.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/auto-complete.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/atom-one-dark-reasonable.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/theme.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/tabs.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hugo-theme.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/nucleus.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/fontawesome-all.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hybrid.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/featherlight.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/perfect-scrollbar.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/auto-complete.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/atom-one-dark-reasonable.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/theme.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/tabs.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hugo-theme.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-blue.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-blue.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-custom.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-custom.css?1670667467" rel="stylesheet">
 
-    <script src="/lego/js/jquery-3.3.1.min.js?1670667468"></script>
+    <script src="/lego/js/jquery-3.3.1.min.js?1670667467"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/dns/gcloud/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/lego/js/lunr.min.js?1670667468"></script>
-<script type="text/javascript" src="/lego/js/auto-complete.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/lunr.min.js?1670667467"></script>
+<script type="text/javascript" src="/lego/js/auto-complete.js?1670667467"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/go-acme.github.io\/lego\/";
     
 </script>
-<script type="text/javascript" src="/lego/js/search.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/search.js?1670667467"></script>
 
     
   </div>
@@ -329,7 +329,7 @@
   
     
     <li data-nav-id="/lego/dns/" title="DNS Providers" class="dd-item
-        
+        parent
         
         
         ">
@@ -1218,7 +1218,7 @@
  
   
     
-      <li data-nav-id="/lego/dns/gcloud/" title="Google Cloud" class="dd-item ">
+      <li data-nav-id="/lego/dns/gcloud/" title="Google Cloud" class="dd-item active">
         <a href="/lego/dns/gcloud/">
         Google Cloud
         <i class="fas fa-check read-icon"></i>
@@ -2696,48 +2696,158 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/dns/'>DNS Providers</a> > Google Cloud
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#additional-configuration">Additional Configuration</a></li>
+    <li><a href="#more-information">More information</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Google Cloud
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Configuration for <a href="https://cloud.google.com">Google Cloud</a>.</p>
 <ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
+<li>Code: <code>gcloud</code></li>
+<li>Since: v0.3.0</li>
+</ul>
+
+<div class="notices note" ><p><em>Please contribute by adding a CLI example.</em></p>
+</div>
+
+<h2 id="credentials">Credentials</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Application Default Credentials</code></td>
+<td><a href="https://cloud.google.com/docs/authentication/production#providing_credentials_to_your_application">Documentation</a></td>
+</tr>
+<tr>
+<td><code>GCE_PROJECT</code></td>
+<td>Project name (by default, the project name is auto-detected by using the metadata service)</td>
+</tr>
+<tr>
+<td><code>GCE_SERVICE_ACCOUNT</code></td>
+<td>Account</td>
+</tr>
+<tr>
+<td><code>GCE_SERVICE_ACCOUNT_FILE</code></td>
+<td>Account file path</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="additional-configuration">Additional Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GCE_ALLOW_PRIVATE_ZONE</code></td>
+<td>Allows requested domain to be in private DNS zone, works only with a private ACME server (by default: false)</td>
+</tr>
+<tr>
+<td><code>GCE_POLLING_INTERVAL</code></td>
+<td>Time between DNS propagation check</td>
+</tr>
+<tr>
+<td><code>GCE_PROPAGATION_TIMEOUT</code></td>
+<td>Maximum waiting time for DNS propagation</td>
+</tr>
+<tr>
+<td><code>GCE_TTL</code></td>
+<td>The TTL of the TXT record used for the DNS challenge</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="more-information">More information</h2>
 <ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
+<li><a href="https://cloud.google.com/dns/api/v1/">API documentation</a></li>
+<li><a href="https://github.com/googleapis/google-api-go-client">Go client</a></li>
 </ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
-</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+<footer class="footline">
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2923,6 +3033,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2935,6 +3046,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -3592,6 +3706,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -3607,6 +3722,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4805,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/dns/godaddy/" title="Go Daddy"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/dns/hetzner/" title="Hetzner" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -4698,19 +4818,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/lego/js/clipboard.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667468"></script>
-    <script src="/lego/js/jquery.sticky.js?1670667468"></script>
-    <script src="/lego/js/featherlight.min.js?1670667468"></script>
-    <script src="/lego/js/highlight.pack.js?1670667468"></script>
+    <script src="/lego/js/clipboard.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667467"></script>
+    <script src="/lego/js/jquery.sticky.js?1670667467"></script>
+    <script src="/lego/js/featherlight.min.js?1670667467"></script>
+    <script src="/lego/js/highlight.pack.js?1670667467"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667468"></script>
-    <script src="/lego/js/learn.js?1670667468"></script>
-    <script src="/lego/js/hugo-learn.js?1670667468"></script>
+    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667467"></script>
+    <script src="/lego/js/learn.js?1670667467"></script>
+    <script src="/lego/js/hugo-learn.js?1670667467"></script>
     
         
-            <script src="/lego/mermaid/mermaid.js?1670667468"></script>
+            <script src="/lego/mermaid/mermaid.js?1670667467"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

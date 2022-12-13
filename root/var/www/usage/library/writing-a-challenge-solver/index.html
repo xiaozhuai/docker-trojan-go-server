@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>Writing a Challenge Solver :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
     <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/usage/library/writing-a-challenge-solver/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -107,7 +107,7 @@
   
     
     <li data-nav-id="/lego/usage/" title="Usage" class="dd-item
-        
+        parent
         
         
         ">
@@ -263,7 +263,7 @@
   
     
     <li data-nav-id="/lego/usage/library/" title="Library" class="dd-item
-        
+        parent
         
         
         ">
@@ -291,7 +291,7 @@
  
   
     
-      <li data-nav-id="/lego/usage/library/writing-a-challenge-solver/" title="Writing a Challenge Solver" class="dd-item ">
+      <li data-nav-id="/lego/usage/library/writing-a-challenge-solver/" title="Writing a Challenge Solver" class="dd-item active">
         <a href="/lego/usage/library/writing-a-challenge-solver/">
         Writing a Challenge Solver
         <i class="fas fa-check read-icon"></i>
@@ -2696,48 +2696,145 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/usage/'>Usage</a> > <a href='/lego/usage/library/'>Library</a> > Writing a Challenge Solver
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#writing-a-challengeprovider">Writing a challenge.Provider</a></li>
+    <li><a href="#using-your-new-challengeprovider">Using your new challenge.Provider</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Writing a Challenge Solver
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
+<p>Lego can solve multiple ACME challenge types out of the box, but sometimes you have custom requirements.</p>
+<p>For example, you may want to write a solver for the DNS-01 challenge that works with a different DNS provider (lego already supports CloudFlare, AWS, DigitalOcean, and others).</p>
+<p>The DNS-01 challenge is advantageous when other challenge types are impossible.
+For example, the HTTP-01 challenge doesn&rsquo;t work well behind a load balancer or CDN and the TLS-ALPN-01 challenge breaks behind TLS termination.</p>
+<p>But even if using HTTP-01 or TLS-ALPN-01 challenges, you may have specific needs that lego does not consider by default.</p>
+<p>You can write something called a <code>challenge.Provider</code> that implements <a href="https://pkg.go.dev/github.com/go-acme/lego/v4/challenge#Provider">this interface</a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Provider</span> <span class="kd">interface</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Present</span><span class="p">(</span><span class="nx">domain</span><span class="p">,</span> <span class="nx">token</span><span class="p">,</span> <span class="nx">keyAuth</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">CleanUp</span><span class="p">(</span><span class="nx">domain</span><span class="p">,</span> <span class="nx">token</span><span class="p">,</span> <span class="nx">keyAuth</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>This provides the means to solve a challenge.
+First you present a token to the ACME server in a way defined by the challenge type you&rsquo;re solving for, then you &ldquo;clean up&rdquo; after the challenge finishes.</p>
+<h2 id="writing-a-challengeprovider">Writing a challenge.Provider</h2>
+<p>Pretend we want to write our own DNS-01 challenge provider (other challenge types have different requirements but the same principles apply).</p>
+<p>This will let us prove ownership of domain names parked at a new, imaginary DNS service called BestDNS without having to start our own HTTP server.
+BestDNS has an API that, given an authentication token, allows us to manipulate DNS records.</p>
+<p>This simplistic example has only one field to store the auth token, but in reality you may need to keep more state.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">DNSProviderBestDNS</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">apiAuthToken</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>We should provide a constructor that returns a <em>pointer</em> to the <code>struct</code>.
+This is important in case we need to maintain state in the <code>struct</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">NewDNSProviderBestDNS</span><span class="p">(</span><span class="nx">apiAuthToken</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">DNSProviderBestDNS</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">DNSProviderBestDNS</span><span class="p">{</span><span class="nx">apiAuthToken</span><span class="p">:</span> <span class="nx">apiAuthToken</span><span class="p">},</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Now we need to implement the interface.
+We&rsquo;ll start with the <code>Present</code> method.
+You&rsquo;ll be passed the <code>domain</code> name for which you&rsquo;re proving ownership, a <code>token</code>, and a <code>keyAuth</code> string.
+How your provider uses <code>token</code> and <code>keyAuth</code>, or if you even use them at all, depends on the challenge type.
+For DNS-01, we&rsquo;ll just use <code>domain</code> and <code>keyAuth</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">d</span> <span class="o">*</span><span class="nx">DNSProviderBestDNS</span><span class="p">)</span> <span class="nf">Present</span><span class="p">(</span><span class="nx">domain</span><span class="p">,</span> <span class="nx">token</span><span class="p">,</span> <span class="nx">keyAuth</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fqdn</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="nx">dns01</span><span class="p">.</span><span class="nf">GetRecord</span><span class="p">(</span><span class="nx">domain</span><span class="p">,</span> <span class="nx">keyAuth</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// make API request to set a TXT record on fqdn with value and TTL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>After calling <code>dns01.GetRecord(domain, keyAuth)</code>, we now have the information we need to make our API request and set the TXT record:</p>
 <ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
-<ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
+<li><code>fqdn</code> is the fully qualified domain name on which to set the TXT record.</li>
+<li><code>value</code> is the record&rsquo;s value to set on the record.</li>
 </ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
-</ul>
+<p>So then you make an API request to the DNS service according to their docs.
+Once the TXT record is set on the domain, you may return and the challenge will proceed.</p>
+<p>The ACME server will then verify that you did what it required you to do, and once it is finished, lego will call your <code>CleanUp</code> method.
+In our case, we want to remove the TXT record we just created.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">d</span> <span class="o">*</span><span class="nx">DNSProviderBestDNS</span><span class="p">)</span> <span class="nf">CleanUp</span><span class="p">(</span><span class="nx">domain</span><span class="p">,</span> <span class="nx">token</span><span class="p">,</span> <span class="nx">keyAuth</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// clean up any state you created in Present, like removing the TXT record
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>In our case, we&rsquo;d just make another API request to have the DNS record deleted; no need to keep it and clutter the zone file.</p>
+<h2 id="using-your-new-challengeprovider">Using your new challenge.Provider</h2>
+<p>To use your new challenge provider, call <a href="https://pkg.go.dev/github.com/go-acme/lego/v4/challenge/resolver#SolverManager.SetDNS01Provider"><code>client.Challenge.SetDNS01Provider</code></a> to tell lego, &ldquo;For this challenge, use this provider&rdquo;.
+In our case:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">bestDNS</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">NewDNSProviderBestDNS</span><span class="p">(</span><span class="s">&#34;my-auth-token&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">client</span><span class="p">.</span><span class="nx">Challenge</span><span class="p">.</span><span class="nf">SetDNS01Provider</span><span class="p">(</span><span class="nx">bestDNS</span><span class="p">)</span>
+</span></span></code></pre></div><p>Then, when this client tries to solve the DNS-01 challenge, it will use our new provider, which sets TXT records on a domain name hosted by BestDNS.</p>
+<p>That&rsquo;s really all there is to it.
+Go make awesome things!</p>
+
+<footer class="footline">
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2788,6 +2885,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2803,18 +2901,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
+                        
                     
                 
                 
@@ -2823,9 +2911,6 @@
                     
                     
 
-                    
-            
-        
                     
                         
             
@@ -2878,6 +2963,22 @@
                         
             
             
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
         
                     
             
@@ -2888,6 +2989,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2901,6 +3003,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2922,6 +3025,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4793,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/usage/library/" title="Library"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/dns/" title="DNS Providers" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

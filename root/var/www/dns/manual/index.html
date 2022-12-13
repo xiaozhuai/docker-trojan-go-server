@@ -9,25 +9,25 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>Manual :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
-    <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/fontawesome-all.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hybrid.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/featherlight.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/perfect-scrollbar.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/auto-complete.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/atom-one-dark-reasonable.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/theme.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/tabs.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hugo-theme.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/nucleus.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/fontawesome-all.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hybrid.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/featherlight.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/perfect-scrollbar.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/auto-complete.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/atom-one-dark-reasonable.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/theme.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/tabs.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hugo-theme.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-blue.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-blue.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-custom.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-custom.css?1670667467" rel="stylesheet">
 
-    <script src="/lego/js/jquery-3.3.1.min.js?1670667468"></script>
+    <script src="/lego/js/jquery-3.3.1.min.js?1670667467"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/dns/manual/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/lego/js/lunr.min.js?1670667468"></script>
-<script type="text/javascript" src="/lego/js/auto-complete.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/lunr.min.js?1670667467"></script>
+<script type="text/javascript" src="/lego/js/auto-complete.js?1670667467"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/go-acme.github.io\/lego\/";
     
 </script>
-<script type="text/javascript" src="/lego/js/search.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/search.js?1670667467"></script>
 
     
   </div>
@@ -329,7 +329,7 @@
   
     
     <li data-nav-id="/lego/dns/" title="DNS Providers" class="dd-item
-        
+        parent
         
         
         ">
@@ -1701,7 +1701,7 @@
  
   
     
-      <li data-nav-id="/lego/dns/manual/" title="Manual" class="dd-item ">
+      <li data-nav-id="/lego/dns/manual/" title="Manual" class="dd-item active">
         <a href="/lego/dns/manual/">
         Manual
         <i class="fas fa-check read-icon"></i>
@@ -2696,48 +2696,119 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/dns/'>DNS Providers</a> > Manual
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#example">Example</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Manual
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
-<ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
-<ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
-</ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
-</ul>
+<p>Solving the DNS-01 challenge using CLI prompt.</p>
+<h2 id="example">Example</h2>
+<p>To start using the CLI prompt &ldquo;provider&rdquo;, start lego with <code>--dns manual</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> lego --email <span class="s2">&#34;you@example.com&#34;</span> --domains<span class="o">=</span><span class="s2">&#34;example.com&#34;</span> --dns <span class="s2">&#34;manual&#34;</span> run
+</span></span></code></pre></div><p>What follows are a few log print outs, interspersed with some prompts, asking for you to do perform some actions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">No key found for account you@example.com. Generating a P256 key.
+</span></span><span class="line"><span class="cl">Saved key to ./.lego/accounts/acme-v02.api.letsencrypt.org/you@example.com/keys/you@example.com.key
+</span></span><span class="line"><span class="cl">Please review the TOS at https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf
+</span></span><span class="line"><span class="cl">Do you accept the TOS? Y/n
+</span></span></code></pre></div><p>If you accept the linked Terms of Service, hit <code>Enter</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">[INFO] acme: Registering account for you@example.com
+</span></span><span class="line"><span class="cl">!!!! HEADS UP !!!!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Your account credentials have been saved in your Let&#39;s Encrypt
+</span></span><span class="line"><span class="cl">    configuration directory at &#34;./.lego/accounts&#34;.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    You should make a secure backup of this folder now. This
+</span></span><span class="line"><span class="cl">    configuration directory will also contain certificates and
+</span></span><span class="line"><span class="cl">    private keys obtained from Let&#39;s Encrypt so making regular
+</span></span><span class="line"><span class="cl">    backups of this folder is ideal.
+</span></span><span class="line"><span class="cl">[INFO] [example.com] acme: Obtaining bundled SAN certificate
+</span></span><span class="line"><span class="cl">[INFO] [example.com] AuthURL: https://acme-v02.api.letsencrypt.org/acme/authz-v3/2345678901
+</span></span><span class="line"><span class="cl">[INFO] [example.com] acme: Could not find solver for: tls-alpn-01
+</span></span><span class="line"><span class="cl">[INFO] [example.com] acme: Could not find solver for: http-01
+</span></span><span class="line"><span class="cl">[INFO] [example.com] acme: use dns-01 solver
+</span></span><span class="line"><span class="cl">[INFO] [example.com] acme: Preparing to solve DNS-01
+</span></span><span class="line"><span class="cl">lego: Please create the following TXT record in your example.com. zone:
+</span></span><span class="line"><span class="cl">_acme-challenge.example.com. 120 IN TXT &#34;hX0dPkG6Gfs9hUvBAchQclkyyoEKbShbpvJ9mY5q2JQ&#34;
+</span></span><span class="line"><span class="cl">lego: Press &#39;Enter&#39; when you are done
+</span></span></code></pre></div><p>Do as instructed, and create the TXT records, and hit <code>Enter</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">[INFO] [example.com] acme: Trying to solve DNS-01
+</span></span><span class="line"><span class="cl">[INFO] [example.com] acme: Checking DNS record propagation using [192.168.8.1:53]
+</span></span><span class="line"><span class="cl">[INFO] Wait for propagation [timeout: 1m0s, interval: 2s]
+</span></span><span class="line"><span class="cl">[INFO] [example.com] acme: Waiting for DNS record propagation.
+</span></span><span class="line"><span class="cl">[INFO] [example.com] The server validated our request
+</span></span><span class="line"><span class="cl">[INFO] [example.com] acme: Cleaning DNS-01 challenge
+</span></span><span class="line"><span class="cl">lego: You can now remove this TXT record from your example.com. zone:
+</span></span><span class="line"><span class="cl">_acme-challenge.example.com. 120 IN TXT &#34;hX0dPkG6Gfs9hUvBAchQclkyyoEKbShbpvJ9mY5q2JQ&#34;
+</span></span><span class="line"><span class="cl">[INFO] [example.com] acme: Validations succeeded; requesting certificates
+</span></span><span class="line"><span class="cl">[INFO] [example.com] Server responded with a certificate.
+</span></span></code></pre></div><p>As mentioned, you can now remove the TXT record again.</p>
+
+<footer class="footline">
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2923,6 +2994,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2935,6 +3007,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -3960,6 +4035,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -3975,6 +4051,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4766,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/dns/luadns/" title="LuaDNS"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/dns/mydnsjp/" title="MyDNS.jp" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -4698,19 +4779,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/lego/js/clipboard.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667468"></script>
-    <script src="/lego/js/jquery.sticky.js?1670667468"></script>
-    <script src="/lego/js/featherlight.min.js?1670667468"></script>
-    <script src="/lego/js/highlight.pack.js?1670667468"></script>
+    <script src="/lego/js/clipboard.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667467"></script>
+    <script src="/lego/js/jquery.sticky.js?1670667467"></script>
+    <script src="/lego/js/featherlight.min.js?1670667467"></script>
+    <script src="/lego/js/highlight.pack.js?1670667467"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667468"></script>
-    <script src="/lego/js/learn.js?1670667468"></script>
-    <script src="/lego/js/hugo-learn.js?1670667468"></script>
+    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667467"></script>
+    <script src="/lego/js/learn.js?1670667467"></script>
+    <script src="/lego/js/hugo-learn.js?1670667467"></script>
     
         
-            <script src="/lego/mermaid/mermaid.js?1670667468"></script>
+            <script src="/lego/mermaid/mermaid.js?1670667467"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

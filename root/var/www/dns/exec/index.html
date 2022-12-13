@@ -9,25 +9,25 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>External program :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
-    <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/fontawesome-all.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hybrid.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/featherlight.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/perfect-scrollbar.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/auto-complete.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/atom-one-dark-reasonable.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/theme.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/tabs.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hugo-theme.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/nucleus.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/fontawesome-all.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hybrid.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/featherlight.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/perfect-scrollbar.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/auto-complete.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/atom-one-dark-reasonable.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/theme.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/tabs.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hugo-theme.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-blue.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-blue.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-custom.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-custom.css?1670667467" rel="stylesheet">
 
-    <script src="/lego/js/jquery-3.3.1.min.js?1670667468"></script>
+    <script src="/lego/js/jquery-3.3.1.min.js?1670667467"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/dns/exec/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/lego/js/lunr.min.js?1670667468"></script>
-<script type="text/javascript" src="/lego/js/auto-complete.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/lunr.min.js?1670667467"></script>
+<script type="text/javascript" src="/lego/js/auto-complete.js?1670667467"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/go-acme.github.io\/lego\/";
     
 </script>
-<script type="text/javascript" src="/lego/js/search.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/search.js?1670667467"></script>
 
     
   </div>
@@ -329,7 +329,7 @@
   
     
     <li data-nav-id="/lego/dns/" title="DNS Providers" class="dd-item
-        
+        parent
         
         
         ">
@@ -1071,7 +1071,7 @@
  
   
     
-      <li data-nav-id="/lego/dns/exec/" title="External program" class="dd-item ">
+      <li data-nav-id="/lego/dns/exec/" title="External program" class="dd-item active">
         <a href="/lego/dns/exec/">
         External program
         <i class="fas fa-check read-icon"></i>
@@ -2696,48 +2696,235 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/dns/'>DNS Providers</a> > External program
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#base-configuration">Base Configuration</a></li>
+    <li><a href="#additional-configuration">Additional Configuration</a></li>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#commands">Commands</a>
+      <ul>
+        <li><a href="#present">Present</a></li>
+        <li><a href="#cleanup">Cleanup</a></li>
+        <li><a href="#timeout">Timeout</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              External program
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Solving the DNS-01 challenge using an external program.</p>
 <ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
-<ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
+<li>Code: <code>exec</code></li>
+<li>Since: v0.5.0</li>
 </ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
-</ul>
+<p>Here is an example bash command using the External program provider:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">EXEC_PATH</span><span class="o">=</span>/the/path/to/myscript.sh <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>lego --email you@example.com --dns <span class="nb">exec</span> --domains my.example.org run
+</span></span></code></pre></div><h2 id="base-configuration">Base Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EXEC_MODE</code></td>
+<td><code>RAW</code>, none</td>
+</tr>
+<tr>
+<td><code>EXEC_PATH</code></td>
+<td>The path of the the external program.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="additional-configuration">Additional Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EXEC_POLLING_INTERVAL</code></td>
+<td>Time between DNS propagation check.</td>
+</tr>
+<tr>
+<td><code>EXEC_PROPAGATION_TIMEOUT</code></td>
+<td>Maximum waiting time for DNS propagation.</td>
+</tr>
+<tr>
+<td><code>EXEC_SEQUENCE_INTERVAL</code></td>
+<td>Time between sequential requests.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="description">Description</h2>
+<p>The file name of the external program is specified in the environment variable <code>EXEC_PATH</code>.</p>
+<p>When it is run by lego, three command-line parameters are passed to it:
+The action (&ldquo;present&rdquo; or &ldquo;cleanup&rdquo;), the fully-qualified domain name and the value for the record.</p>
+<p>For example, requesting a certificate for the domain &lsquo;my.example.org&rsquo; can be achieved by calling lego as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">EXEC_PATH</span><span class="o">=</span>./update-dns.sh <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	lego --email you@example.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--dns <span class="nb">exec</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--domains my.example.org run
+</span></span></code></pre></div><p>It will then call the program &lsquo;./update-dns.sh&rsquo; with like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./update-dns.sh <span class="s2">&#34;present&#34;</span> <span class="s2">&#34;_acme-challenge.my.example.org.&#34;</span> <span class="s2">&#34;MsijOYZxqyjGnFGwhjrhfg-Xgbl5r68WPda0J9EgqqI&#34;</span>
+</span></span></code></pre></div><p>The program then needs to make sure the record is inserted.
+When it returns an error via a non-zero exit code, lego aborts.</p>
+<p>When the record is to be removed again,
+the program is called with the first command-line parameter set to <code>cleanup</code> instead of <code>present</code>.</p>
+<p>If you want to use the raw domain, token, and keyAuth values with your program, you can set <code>EXEC_MODE=RAW</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">EXEC_MODE</span><span class="o">=</span>RAW <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">EXEC_PATH</span><span class="o">=</span>./update-dns.sh <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	lego --email you@example.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--dns <span class="nb">exec</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>	--domains my.example.org run
+</span></span></code></pre></div><p>It will then call the program <code>./update-dns.sh</code> like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./update-dns.sh <span class="s2">&#34;present&#34;</span> <span class="s2">&#34;my.example.org.&#34;</span> <span class="s2">&#34;--&#34;</span> <span class="s2">&#34;some-token&#34;</span> <span class="s2">&#34;KxAy-J3NwUmg9ZQuM-gP_Mq1nStaYSaP9tYQs5_-YsE.ksT-qywTd8058G-SHHWA3RAN72Pr0yWtPYmmY5UBpQ8&#34;</span>
+</span></span></code></pre></div><h2 id="commands">Commands</h2>
+
+<div class="notices note" ><p>The <code>--</code> is because the token MAY start with a <code>-</code>, and the called program may try and interpret a <code>-</code> as indicating a flag.
+In the case of urfave, which is commonly used,
+you can use the <code>--</code> delimiter to specify the start of positional arguments, and handle such a string safely.</p>
+</div>
+
+<h3 id="present">Present</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td><code>myprogram present -- &lt;FQDN&gt; &lt;record&gt;</code></td>
+</tr>
+<tr>
+<td><code>RAW</code></td>
+<td><code>myprogram present -- &lt;domain&gt; &lt;token&gt; &lt;key_auth&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cleanup">Cleanup</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td><code>myprogram cleanup -- &lt;FQDN&gt; &lt;record&gt;</code></td>
+</tr>
+<tr>
+<td><code>RAW</code></td>
+<td><code>myprogram cleanup -- &lt;domain&gt; &lt;token&gt; &lt;key_auth&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="timeout">Timeout</h3>
+<p>The command have to display propagation timeout and polling interval into Stdout.</p>
+<p>The values must be formatted as JSON, and times are in seconds.
+Example: <code>{&quot;timeout&quot;: 30, &quot;interval&quot;: 5}</code></p>
+<p>If an error occurs or if the command is not provided:
+the default display propagation timeout and polling interval are used.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td><code>myprogram timeout</code></td>
+</tr>
+<tr>
+<td><code>RAW</code></td>
+<td><code>myprogram timeout</code></td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+<footer class="footline">
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2923,6 +3110,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2935,6 +3123,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -3480,6 +3671,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -3495,6 +3687,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4882,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/dns/exoscale/" title="Exoscale"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/dns/freemyip/" title="freemyip.com" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -4698,19 +4895,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/lego/js/clipboard.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667468"></script>
-    <script src="/lego/js/jquery.sticky.js?1670667468"></script>
-    <script src="/lego/js/featherlight.min.js?1670667468"></script>
-    <script src="/lego/js/highlight.pack.js?1670667468"></script>
+    <script src="/lego/js/clipboard.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667467"></script>
+    <script src="/lego/js/jquery.sticky.js?1670667467"></script>
+    <script src="/lego/js/featherlight.min.js?1670667467"></script>
+    <script src="/lego/js/highlight.pack.js?1670667467"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667468"></script>
-    <script src="/lego/js/learn.js?1670667468"></script>
-    <script src="/lego/js/hugo-learn.js?1670667468"></script>
+    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667467"></script>
+    <script src="/lego/js/learn.js?1670667467"></script>
+    <script src="/lego/js/hugo-learn.js?1670667467"></script>
     
         
-            <script src="/lego/mermaid/mermaid.js?1670667468"></script>
+            <script src="/lego/mermaid/mermaid.js?1670667467"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

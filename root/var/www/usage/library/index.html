@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>Library :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
     <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/usage/library/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -107,7 +107,7 @@
   
     
     <li data-nav-id="/lego/usage/" title="Usage" class="dd-item
-        
+        parent
         
         
         ">
@@ -264,7 +264,7 @@
     
     <li data-nav-id="/lego/usage/library/" title="Library" class="dd-item
         
-        
+        active
         
         ">
       <a href="/lego/usage/library/">
@@ -2696,48 +2696,184 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/usage/'>Usage</a> > Library
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#godoc">GoDoc</a></li>
+    <li><a href="#usage">Usage</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Library
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
-<ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
-<ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
-</ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
-</ul>
+
+	<p>Lego can be use as a Go Library.</p>
+<h2 id="godoc">GoDoc</h2>
+<p>The GoDoc can be found here: <a href="https://pkg.go.dev/mod/github.com/go-acme/lego/v4">GoDoc</a>.</p>
+<h2 id="usage">Usage</h2>
+<p>A valid, but bare-bones example use of the acme package:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;crypto&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;crypto/ecdsa&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;crypto/elliptic&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;crypto/rand&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;log&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/go-acme/lego/v4/certcrypto&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/go-acme/lego/v4/certificate&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/go-acme/lego/v4/challenge/http01&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/go-acme/lego/v4/challenge/tlsalpn01&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/go-acme/lego/v4/lego&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/go-acme/lego/v4/registration&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// You&#39;ll need a user or account type that implements acme.User
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">MyUser</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Email</span>        <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Registration</span> <span class="o">*</span><span class="nx">registration</span><span class="p">.</span><span class="nx">Resource</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">key</span>          <span class="nx">crypto</span><span class="p">.</span><span class="nx">PrivateKey</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">u</span> <span class="o">*</span><span class="nx">MyUser</span><span class="p">)</span> <span class="nf">GetEmail</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">u</span><span class="p">.</span><span class="nx">Email</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">u</span> <span class="nx">MyUser</span><span class="p">)</span> <span class="nf">GetRegistration</span><span class="p">()</span> <span class="o">*</span><span class="nx">registration</span><span class="p">.</span><span class="nx">Resource</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">u</span><span class="p">.</span><span class="nx">Registration</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">u</span> <span class="o">*</span><span class="nx">MyUser</span><span class="p">)</span> <span class="nf">GetPrivateKey</span><span class="p">()</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">PrivateKey</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">u</span><span class="p">.</span><span class="nx">key</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Create a user. New accounts need an email and private key to start.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">privateKey</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ecdsa</span><span class="p">.</span><span class="nf">GenerateKey</span><span class="p">(</span><span class="nx">elliptic</span><span class="p">.</span><span class="nf">P256</span><span class="p">(),</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Reader</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">myUser</span> <span class="o">:=</span> <span class="nx">MyUser</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Email</span><span class="p">:</span> <span class="s">&#34;you@yours.com&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">key</span><span class="p">:</span>   <span class="nx">privateKey</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">config</span> <span class="o">:=</span> <span class="nx">lego</span><span class="p">.</span><span class="nf">NewConfig</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">myUser</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// This CA URL is configured for a local dev instance of Boulder running in Docker in a VM.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">config</span><span class="p">.</span><span class="nx">CADirURL</span> <span class="p">=</span> <span class="s">&#34;http://192.168.99.100:4000/directory&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">config</span><span class="p">.</span><span class="nx">Certificate</span><span class="p">.</span><span class="nx">KeyType</span> <span class="p">=</span> <span class="nx">certcrypto</span><span class="p">.</span><span class="nx">RSA2048</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// A client facilitates communication with the CA server.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">client</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">lego</span><span class="p">.</span><span class="nf">NewClient</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// We specify an HTTP port of 5002 and an TLS port of 5001 on all interfaces
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// because we aren&#39;t running as root and can&#39;t bind a listener to port 80 and 443
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// (used later when we attempt to pass challenges). Keep in mind that you still
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// need to proxy challenge traffic to port 5002 and 5001.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">err</span> <span class="p">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Challenge</span><span class="p">.</span><span class="nf">SetHTTP01Provider</span><span class="p">(</span><span class="nx">http01</span><span class="p">.</span><span class="nf">NewProviderServer</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;5002&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">err</span> <span class="p">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Challenge</span><span class="p">.</span><span class="nf">SetTLSALPN01Provider</span><span class="p">(</span><span class="nx">tlsalpn01</span><span class="p">.</span><span class="nf">NewProviderServer</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;5001&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// New users will need to register
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">reg</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Registration</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="nx">registration</span><span class="p">.</span><span class="nx">RegisterOptions</span><span class="p">{</span><span class="nx">TermsOfServiceAgreed</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">myUser</span><span class="p">.</span><span class="nx">Registration</span> <span class="p">=</span> <span class="nx">reg</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">request</span> <span class="o">:=</span> <span class="nx">certificate</span><span class="p">.</span><span class="nx">ObtainRequest</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Domains</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;mydomain.com&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Bundle</span><span class="p">:</span>  <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">certificates</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Certificate</span><span class="p">.</span><span class="nf">Obtain</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Each certificate comes back with the cert bytes, the bytes of the client&#39;s
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// private key, and a certificate URL. SAVE THESE TO DISK.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">certificates</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// ... all done.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div>
+
+
+
+
+<footer class=" footline" >
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2788,6 +2924,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2803,18 +2940,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
+                        
                     
                 
                 
@@ -2823,9 +2950,6 @@
                     
                     
 
-                    
-            
-        
                     
                         
             
@@ -2878,6 +3002,22 @@
                         
             
             
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
         
                     
             
@@ -2887,6 +3027,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -2900,6 +3041,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4831,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/usage/cli/options/" title="Options"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/usage/library/writing-a-challenge-solver/" title="Writing a Challenge Solver" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -4720,4 +4866,3 @@
 
   </body>
 </html>
-

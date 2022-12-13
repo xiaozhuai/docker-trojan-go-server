@@ -9,25 +9,25 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>Cloudflare :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
-    <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/fontawesome-all.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hybrid.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/featherlight.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/perfect-scrollbar.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/auto-complete.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/atom-one-dark-reasonable.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/theme.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/tabs.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hugo-theme.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/nucleus.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/fontawesome-all.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hybrid.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/featherlight.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/perfect-scrollbar.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/auto-complete.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/atom-one-dark-reasonable.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/theme.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/tabs.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hugo-theme.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-blue.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-blue.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-custom.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-custom.css?1670667467" rel="stylesheet">
 
-    <script src="/lego/js/jquery-3.3.1.min.js?1670667468"></script>
+    <script src="/lego/js/jquery-3.3.1.min.js?1670667467"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/dns/cloudflare/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/lego/js/lunr.min.js?1670667468"></script>
-<script type="text/javascript" src="/lego/js/auto-complete.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/lunr.min.js?1670667467"></script>
+<script type="text/javascript" src="/lego/js/auto-complete.js?1670667467"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/go-acme.github.io\/lego\/";
     
 </script>
-<script type="text/javascript" src="/lego/js/search.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/search.js?1670667467"></script>
 
     
   </div>
@@ -329,7 +329,7 @@
   
     
     <li data-nav-id="/lego/dns/" title="DNS Providers" class="dd-item
-        
+        parent
         
         
         ">
@@ -651,7 +651,7 @@
  
   
     
-      <li data-nav-id="/lego/dns/cloudflare/" title="Cloudflare" class="dd-item ">
+      <li data-nav-id="/lego/dns/cloudflare/" title="Cloudflare" class="dd-item active">
         <a href="/lego/dns/cloudflare/">
         Cloudflare
         <i class="fas fa-check read-icon"></i>
@@ -2696,48 +2696,215 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/dns/'>DNS Providers</a> > Cloudflare
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#additional-configuration">Additional Configuration</a></li>
+    <li><a href="#description">Description</a>
+      <ul>
+        <li><a href="#api-keys">API keys</a></li>
+        <li><a href="#api-tokens">API tokens</a></li>
+      </ul>
+    </li>
+    <li><a href="#more-information">More information</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Cloudflare
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Configuration for <a href="https://www.cloudflare.com/dns/">Cloudflare</a>.</p>
 <ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
+<li>Code: <code>cloudflare</code></li>
+<li>Since: v0.3.0</li>
+</ul>
+<p>Here is an example bash command using the Cloudflare provider:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">CLOUDFLARE_EMAIL</span><span class="o">=</span>you@example.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">CLOUDFLARE_API_KEY</span><span class="o">=</span>b9841238feb177a84330febba8a83208921177bffe733 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>lego --email you@example.com --dns cloudflare --domains my.example.org run
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># or</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">CLOUDFLARE_DNS_API_TOKEN</span><span class="o">=</span>1234567890abcdefghijklmnopqrstuvwxyz <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>lego --email you@example.com --dns cloudflare --domains my.example.org run
+</span></span></code></pre></div><h2 id="credentials">Credentials</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CF_API_EMAIL</code></td>
+<td>Account email</td>
+</tr>
+<tr>
+<td><code>CF_API_KEY</code></td>
+<td>API key</td>
+</tr>
+<tr>
+<td><code>CF_DNS_API_TOKEN</code></td>
+<td>API token with DNS:Edit permission (since v3.1.0)</td>
+</tr>
+<tr>
+<td><code>CF_ZONE_API_TOKEN</code></td>
+<td>API token with Zone:Read permission (since v3.1.0)</td>
+</tr>
+<tr>
+<td><code>CLOUDFLARE_API_KEY</code></td>
+<td>Alias to CF_API_KEY</td>
+</tr>
+<tr>
+<td><code>CLOUDFLARE_DNS_API_TOKEN</code></td>
+<td>Alias to CF_DNS_API_TOKEN</td>
+</tr>
+<tr>
+<td><code>CLOUDFLARE_EMAIL</code></td>
+<td>Alias to CF_API_EMAIL</td>
+</tr>
+<tr>
+<td><code>CLOUDFLARE_ZONE_API_TOKEN</code></td>
+<td>Alias to CF_ZONE_API_TOKEN</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="additional-configuration">Additional Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLOUDFLARE_HTTP_TIMEOUT</code></td>
+<td>API request timeout</td>
+</tr>
+<tr>
+<td><code>CLOUDFLARE_POLLING_INTERVAL</code></td>
+<td>Time between DNS propagation check</td>
+</tr>
+<tr>
+<td><code>CLOUDFLARE_PROPAGATION_TIMEOUT</code></td>
+<td>Maximum waiting time for DNS propagation</td>
+</tr>
+<tr>
+<td><code>CLOUDFLARE_TTL</code></td>
+<td>The TTL of the TXT record used for the DNS challenge</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="description">Description</h2>
+<p>You may use <code>CF_API_EMAIL</code> and <code>CF_API_KEY</code> to authenticate, or <code>CF_DNS_API_TOKEN</code>, or <code>CF_DNS_API_TOKEN</code> and <code>CF_ZONE_API_TOKEN</code>.</p>
+<h3 id="api-keys">API keys</h3>
+<p>If using API keys (<code>CF_API_EMAIL</code> and <code>CF_API_KEY</code>), the Global API Key needs to be used, not the Origin CA Key.</p>
+<p>Please be aware, that this in principle allows Lego to read and change <em>everything</em> related to this account.</p>
+<h3 id="api-tokens">API tokens</h3>
+<p>With API tokens (<code>CF_DNS_API_TOKEN</code>, and optionally <code>CF_ZONE_API_TOKEN</code>),
+very specific access can be granted to your resources at Cloudflare.
+See this <a href="https://blog.cloudflare.com/api-tokens-general-availability/">Cloudflare announcement</a> for details.</p>
+<p>The main resources Lego cares for are the DNS entries for your Zones.
+It also need to resolve a domain name to an internal Zone ID in order to manipulate DNS entries.</p>
+<p>Hence, you should create an API token with the following permissions:</p>
 <ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
+<li>Zone / Zone / Read</li>
+<li>Zone / DNS / Edit</li>
 </ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
+<p>You also need to scope the access to all your domains for this to work.
+Then pass the API token as <code>CF_DNS_API_TOKEN</code> to Lego.</p>
+<p><strong>Alternatively,</strong> if you prefer a more strict set of privileges,
+you can split the access tokens:</p>
+<ul>
+<li>Create one with <em>Zone / Zone / Read</em> permissions and scope it to all your zones.
+This is needed to resolve domain names to Zone IDs and can be shared among multiple Lego installations.
+Pass this API token as <code>CF_ZONE_API_TOKEN</code> to Lego.</li>
+<li>Create another API token with <em>Zone / DNS / Edit</em> permissions and set the scope to the domains you want to manage with a single Lego installation.
+Pass this token as <code>CF_DNS_API_TOKEN</code> to Lego.</li>
+<li>Repeat the previous step for each host you want to run Lego on.</li>
 </ul>
+<p>This &ldquo;paranoid&rdquo; setup is mainly interesting for users who manage many zones/domains with a single Cloudflare account.
+It follows the principle of least privilege and limits the possible damage, should one of the hosts become compromised.</p>
+<h2 id="more-information">More information</h2>
+<ul>
+<li><a href="https://api.cloudflare.com/">API documentation</a></li>
+<li><a href="https://github.com/cloudflare/cloudflare-go">Go client</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+<footer class="footline">
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2923,6 +3090,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2935,6 +3103,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -3160,6 +3331,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -3175,6 +3347,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4862,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/dns/clouddns/" title="CloudDNS"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/dns/cloudns/" title="ClouDNS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -4698,19 +4875,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/lego/js/clipboard.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667468"></script>
-    <script src="/lego/js/jquery.sticky.js?1670667468"></script>
-    <script src="/lego/js/featherlight.min.js?1670667468"></script>
-    <script src="/lego/js/highlight.pack.js?1670667468"></script>
+    <script src="/lego/js/clipboard.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667467"></script>
+    <script src="/lego/js/jquery.sticky.js?1670667467"></script>
+    <script src="/lego/js/featherlight.min.js?1670667467"></script>
+    <script src="/lego/js/highlight.pack.js?1670667467"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667468"></script>
-    <script src="/lego/js/learn.js?1670667468"></script>
-    <script src="/lego/js/hugo-learn.js?1670667468"></script>
+    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667467"></script>
+    <script src="/lego/js/learn.js?1670667467"></script>
+    <script src="/lego/js/hugo-learn.js?1670667467"></script>
     
         
-            <script src="/lego/mermaid/mermaid.js?1670667468"></script>
+            <script src="/lego/mermaid/mermaid.js?1670667467"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

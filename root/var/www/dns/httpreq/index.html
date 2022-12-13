@@ -9,25 +9,25 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>HTTP request :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
-    <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/fontawesome-all.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hybrid.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/featherlight.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/perfect-scrollbar.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/auto-complete.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/atom-one-dark-reasonable.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/theme.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/tabs.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hugo-theme.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/nucleus.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/fontawesome-all.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hybrid.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/featherlight.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/perfect-scrollbar.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/auto-complete.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/atom-one-dark-reasonable.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/theme.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/tabs.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hugo-theme.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-blue.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-blue.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-custom.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-custom.css?1670667467" rel="stylesheet">
 
-    <script src="/lego/js/jquery-3.3.1.min.js?1670667468"></script>
+    <script src="/lego/js/jquery-3.3.1.min.js?1670667467"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/dns/httpreq/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/lego/js/lunr.min.js?1670667468"></script>
-<script type="text/javascript" src="/lego/js/auto-complete.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/lunr.min.js?1670667467"></script>
+<script type="text/javascript" src="/lego/js/auto-complete.js?1670667467"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/go-acme.github.io\/lego\/";
     
 </script>
-<script type="text/javascript" src="/lego/js/search.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/search.js?1670667467"></script>
 
     
   </div>
@@ -329,7 +329,7 @@
   
     
     <li data-nav-id="/lego/dns/" title="DNS Providers" class="dd-item
-        
+        parent
         
         
         ">
@@ -1302,7 +1302,7 @@
  
   
     
-      <li data-nav-id="/lego/dns/httpreq/" title="HTTP request" class="dd-item ">
+      <li data-nav-id="/lego/dns/httpreq/" title="HTTP request" class="dd-item active">
         <a href="/lego/dns/httpreq/">
         HTTP request
         <i class="fas fa-check read-icon"></i>
@@ -2696,48 +2696,183 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/dns/'>DNS Providers</a> > HTTP request
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#additional-configuration">Additional Configuration</a></li>
+    <li><a href="#description">Description</a>
+      <ul>
+        <li><a href="#mode">Mode</a></li>
+        <li><a href="#authentication">Authentication</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              HTTP request
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Configuration for <a href="/lego/dns/httpreq/">HTTP request</a>.</p>
 <ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
+<li>Code: <code>httpreq</code></li>
+<li>Since: v2.0.0</li>
+</ul>
+<p>Here is an example bash command using the HTTP request provider:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">HTTPREQ_ENDPOINT</span><span class="o">=</span>http://my.server.com:9090 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>lego --email you@example.com --dns httpreq --domains my.example.org run
+</span></span></code></pre></div><h2 id="credentials">Credentials</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTPREQ_ENDPOINT</code></td>
+<td>The URL of the server</td>
+</tr>
+<tr>
+<td><code>HTTPREQ_MODE</code></td>
+<td><code>RAW</code>, none</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="additional-configuration">Additional Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTPREQ_HTTP_TIMEOUT</code></td>
+<td>API request timeout</td>
+</tr>
+<tr>
+<td><code>HTTPREQ_PASSWORD</code></td>
+<td>Basic authentication password</td>
+</tr>
+<tr>
+<td><code>HTTPREQ_POLLING_INTERVAL</code></td>
+<td>Time between DNS propagation check</td>
+</tr>
+<tr>
+<td><code>HTTPREQ_PROPAGATION_TIMEOUT</code></td>
+<td>Maximum waiting time for DNS propagation</td>
+</tr>
+<tr>
+<td><code>HTTPREQ_USERNAME</code></td>
+<td>Basic authentication username</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="description">Description</h2>
+<p>The server must provide:</p>
 <ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
+<li><code>POST</code> <code>/present</code></li>
+<li><code>POST</code> <code>/cleanup</code></li>
 </ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
+<p>The URL of the server must be define by <code>HTTPREQ_ENDPOINT</code>.</p>
+<h3 id="mode">Mode</h3>
+<p>There are 2 modes (<code>HTTPREQ_MODE</code>):</p>
+<ul>
+<li>default mode:</li>
 </ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;fqdn&#34;</span><span class="p">:</span> <span class="s2">&#34;_acme-challenge.domain.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;LHDhK3oGRvkiefQnx7OOczTY5Tic_xZ6HcMOc_gmtoM&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ul>
+<li><code>RAW</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;domain&#34;</span><span class="p">:</span> <span class="s2">&#34;domain&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;token&#34;</span><span class="p">:</span> <span class="s2">&#34;token&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;keyAuth&#34;</span><span class="p">:</span> <span class="s2">&#34;key&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="authentication">Authentication</h3>
+<p>Basic authentication (optional) can be set with some environment variables:</p>
+<ul>
+<li><code>HTTPREQ_USERNAME</code> and <code>HTTPREQ_PASSWORD</code></li>
+<li>both values must be set, otherwise basic authentication is not defined.</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+<footer class="footline">
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2923,6 +3058,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2935,6 +3071,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -3656,6 +3795,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -3671,6 +3811,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4830,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/dns/hosttech/" title="Hosttech"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/dns/hurricane/" title="Hurricane Electric DNS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -4698,19 +4843,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/lego/js/clipboard.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667468"></script>
-    <script src="/lego/js/jquery.sticky.js?1670667468"></script>
-    <script src="/lego/js/featherlight.min.js?1670667468"></script>
-    <script src="/lego/js/highlight.pack.js?1670667468"></script>
+    <script src="/lego/js/clipboard.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667467"></script>
+    <script src="/lego/js/jquery.sticky.js?1670667467"></script>
+    <script src="/lego/js/featherlight.min.js?1670667467"></script>
+    <script src="/lego/js/highlight.pack.js?1670667467"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667468"></script>
-    <script src="/lego/js/learn.js?1670667468"></script>
-    <script src="/lego/js/hugo-learn.js?1670667468"></script>
+    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667467"></script>
+    <script src="/lego/js/learn.js?1670667467"></script>
+    <script src="/lego/js/hugo-learn.js?1670667467"></script>
     
         
-            <script src="/lego/mermaid/mermaid.js?1670667468"></script>
+            <script src="/lego/mermaid/mermaid.js?1670667467"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

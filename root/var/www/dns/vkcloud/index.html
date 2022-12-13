@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>VK Cloud :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
     <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/dns/vkcloud/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -329,7 +329,7 @@
   
     
     <li data-nav-id="/lego/dns/" title="DNS Providers" class="dd-item
-        
+        parent
         
         
         ">
@@ -2478,7 +2478,7 @@
  
   
     
-      <li data-nav-id="/lego/dns/vkcloud/" title="VK Cloud" class="dd-item ">
+      <li data-nav-id="/lego/dns/vkcloud/" title="VK Cloud" class="dd-item active">
         <a href="/lego/dns/vkcloud/">
         VK Cloud
         <i class="fas fa-check read-icon"></i>
@@ -2696,48 +2696,191 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/dns/'>DNS Providers</a> > VK Cloud
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#additional-configuration">Additional Configuration</a></li>
+    <li><a href="#credential-inforamtion">Credential inforamtion</a></li>
+    <li><a href="#more-information">More information</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              VK Cloud
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Configuration for <a href="https://mcs.mail.ru/">VK Cloud</a>.</p>
 <ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
+<li>Code: <code>vkcloud</code></li>
+<li>Since: v4.9.0</li>
+</ul>
+<p>Here is an example bash command using the VK Cloud provider:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">VK_CLOUD_PROJECT_ID</span><span class="o">=</span><span class="s2">&#34;&lt;your_project_id&gt;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">VK_CLOUD_USERNAME</span><span class="o">=</span><span class="s2">&#34;&lt;your_email&gt;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">VK_CLOUD_PASSWORD</span><span class="o">=</span><span class="s2">&#34;&lt;your_password&gt;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>lego --email you@example.com --dns vkcloud --domains <span class="s2">&#34;example.org&#34;</span> --domains <span class="s2">&#34;*.example.org&#34;</span> run
+</span></span></code></pre></div><h2 id="credentials">Credentials</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VK_CLOUD_PASSWORD</code></td>
+<td>Password for VK Cloud account</td>
+</tr>
+<tr>
+<td><code>VK_CLOUD_PROJECT_ID</code></td>
+<td>String ID of project in VK Cloud</td>
+</tr>
+<tr>
+<td><code>VK_CLOUD_USERNAME</code></td>
+<td>Email of VK Cloud account</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="additional-configuration">Additional Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VK_CLOUD_DNS_ENDPOINT</code></td>
+<td>URL of DNS API. Defaults to <a href="https://mcs.mail.ru/public-dns">https://mcs.mail.ru/public-dns</a> but can be changed for usage with private clouds</td>
+</tr>
+<tr>
+<td><code>VK_CLOUD_DOMAIN_NAME</code></td>
+<td>Openstack users domain name. Defaults to <code>users</code> but can be changed for usage with private clouds</td>
+</tr>
+<tr>
+<td><code>VK_CLOUD_IDENTITY_ENDPOINT</code></td>
+<td>URL of OpenStack Auth API, Defaults to <a href="https://infra.mail.ru:35357/v3/">https://infra.mail.ru:35357/v3/</a> but can be changed for usage with private clouds</td>
+</tr>
+<tr>
+<td><code>VK_CLOUD_POLLING_INTERVAL</code></td>
+<td>Time between DNS propagation check</td>
+</tr>
+<tr>
+<td><code>VK_CLOUD_PROPAGATION_TIMEOUT</code></td>
+<td>Maximum waiting time for DNS propagation</td>
+</tr>
+<tr>
+<td><code>VK_CLOUD_TTL</code></td>
+<td>The TTL of the TXT record used for the DNS challenge</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="credential-inforamtion">Credential inforamtion</h2>
+<p>You can find all required and additional information on <a href="https://mcs.mail.ru/app/en/project/keys">&ldquo;Project/Keys&rdquo; page</a> of your cloud.</p>
+<table>
+<thead>
+<tr>
+<th>ENV Variable</th>
+<th>Parameter from page</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VK_CLOUD_PROJECT_ID</td>
+<td>Project ID</td>
+</tr>
+<tr>
+<td>VK_CLOUD_USERNAME</td>
+<td>Username</td>
+</tr>
+<tr>
+<td>VK_CLOUD_DOMAIN_NAME</td>
+<td>User Domain Name</td>
+</tr>
+<tr>
+<td>VK_CLOUD_IDENTITY_ENDPOINT</td>
+<td>Identity endpoint</td>
+</tr>
+</tbody>
+</table>
+<h2 id="more-information">More information</h2>
 <ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
+<li><a href="https://mcs.mail.ru/docs/networks/vnet/networks/publicdns/api">API documentation</a></li>
 </ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
-</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+<footer class="footline">
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2923,6 +3066,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2935,6 +3079,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4552,6 +4699,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -4567,6 +4715,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4838,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/dns/vinyldns/" title="VinylDNS"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/dns/vscale/" title="Vscale" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

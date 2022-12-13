@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>DNS Providers :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
     <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/dns/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -330,7 +330,7 @@
     
     <li data-nav-id="/lego/dns/" title="DNS Providers" class="dd-item
         
-        
+        active
         
         ">
       <a href="/lego/dns/">
@@ -2696,48 +2696,1336 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > DNS Providers
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#configuration-and-credentials">Configuration and Credentials</a>
+      <ul>
+        <li><a href="#environment-variables-value">Environment Variables: Value</a></li>
+        <li><a href="#environment-variables-file">Environment Variables: File</a></li>
+      </ul>
+    </li>
+    <li><a href="#dns-providers">DNS Providers</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              DNS Providers
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
-<ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
-<ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
-</ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
-</ul>
+
+	<h2 id="configuration-and-credentials">Configuration and Credentials</h2>
+<p>Credentials and DNS configuration for DNS providers must be passed through environment variables.</p>
+<h3 id="environment-variables-value">Environment Variables: Value</h3>
+<p>The environment variables can reference a value.</p>
+<p>Here is an example bash command using the Cloudflare DNS provider:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nv">CLOUDFLARE_EMAIL</span><span class="o">=</span>you@example.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  CLOUDFLARE_API_KEY=b9841238feb177a84330febba8a83208921177bffe733 \
+</span></span></span><span class="line"><span class="cl"><span class="go">  lego --dns cloudflare --domains www.example.com --email you@example.com run
+</span></span></span></code></pre></div><h3 id="environment-variables-file">Environment Variables: File</h3>
+<p>The environment variables can reference a path to file.</p>
+<p>In this case the name of environment variable must be suffixed by <code>_FILE</code>.</p>
+
+<div class="notices note" ><p>The file must contain only the value.</p>
+</div>
+
+<p>Here is an example bash command using the CloudFlare DNS provider:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat /the/path/to/my/key
+</span></span><span class="line"><span class="cl"><span class="go">b9841238feb177a84330febba8a83208921177bffe733
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> cat /the/path/to/my/email
+</span></span><span class="line"><span class="cl"><span class="go">you@example.com
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> <span class="nv">CLOUDFLARE_EMAIL_FILE</span><span class="o">=</span>/the/path/to/my/email <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="go">  CLOUDFLARE_API_KEY_FILE=/the/path/to/my/key \
+</span></span></span><span class="line"><span class="cl"><span class="go">  lego --dns cloudflare --domains www.example.com --email you@example.com run
+</span></span></span></code></pre></div><h2 id="dns-providers">DNS Providers</h2>
+
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">Provider name</th>
+      <th>CLI flag name</th>
+      <th>Required lego version</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    
+    
+    
+    
+    <tr>
+          <td>
+            <a href="/lego/dns/edgedns/">Akamai EdgeDNS</a>
+          </td>
+          <td><a href="https://www.akamai.com/us/en/products/security/edge-dns.jsp" target="_blank">Website</a></td>
+          <td>
+            <code>edgedns</code>
+          </td>
+          <td>v3.9.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/alidns/">Alibaba Cloud DNS</a>
+          </td>
+          <td><a href="https://www.alibabacloud.com/product/dns" target="_blank">Website</a></td>
+          <td>
+            <code>alidns</code>
+          </td>
+          <td>v1.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/allinkl/">all-inkl</a>
+          </td>
+          <td><a href="https://all-inkl.com" target="_blank">Website</a></td>
+          <td>
+            <code>allinkl</code>
+          </td>
+          <td>v4.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/lightsail/">Amazon Lightsail</a>
+          </td>
+          <td><a href="https://aws.amazon.com/lightsail/" target="_blank">Website</a></td>
+          <td>
+            <code>lightsail</code>
+          </td>
+          <td>v0.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/route53/">Amazon Route 53</a>
+          </td>
+          <td><a href="https://aws.amazon.com/route53/" target="_blank">Website</a></td>
+          <td>
+            <code>route53</code>
+          </td>
+          <td>v0.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/arvancloud/">ArvanCloud</a>
+          </td>
+          <td><a href="https://arvancloud.ir" target="_blank">Website</a></td>
+          <td>
+            <code>arvancloud</code>
+          </td>
+          <td>v3.8.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/auroradns/">Aurora DNS</a>
+          </td>
+          <td><a href="https://www.pcextreme.com/dns-health-checks" target="_blank">Website</a></td>
+          <td>
+            <code>auroradns</code>
+          </td>
+          <td>v0.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/autodns/">Autodns</a>
+          </td>
+          <td><a href="https://www.internetx.com/domains/autodns/" target="_blank">Website</a></td>
+          <td>
+            <code>autodns</code>
+          </td>
+          <td>v3.2.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/azure/">Azure</a>
+          </td>
+          <td><a href="https://azure.microsoft.com/services/dns/" target="_blank">Website</a></td>
+          <td>
+            <code>azure</code>
+          </td>
+          <td>v0.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/bindman/">Bindman</a>
+          </td>
+          <td><a href="https://github.com/labbsr0x/bindman-dns-webhook" target="_blank">Website</a></td>
+          <td>
+            <code>bindman</code>
+          </td>
+          <td>v2.6.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/bluecat/">Bluecat</a>
+          </td>
+          <td><a href="https://www.bluecatnetworks.com" target="_blank">Website</a></td>
+          <td>
+            <code>bluecat</code>
+          </td>
+          <td>v0.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/checkdomain/">Checkdomain</a>
+          </td>
+          <td><a href="https://checkdomain.de/" target="_blank">Website</a></td>
+          <td>
+            <code>checkdomain</code>
+          </td>
+          <td>v3.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/civo/">Civo</a>
+          </td>
+          <td><a href="https://civo.com" target="_blank">Website</a></td>
+          <td>
+            <code>civo</code>
+          </td>
+          <td>v4.9.0</td>
+        </tr>
+      
+    
+    <tr>
+          <td>
+            <a href="/lego/dns/clouddns/">CloudDNS</a>
+          </td>
+          <td><a href="https://vshosting.eu/" target="_blank">Website</a></td>
+          <td>
+            <code>clouddns</code>
+          </td>
+          <td>v3.6.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/cloudflare/">Cloudflare</a>
+          </td>
+          <td><a href="https://www.cloudflare.com/dns/" target="_blank">Website</a></td>
+          <td>
+            <code>cloudflare</code>
+          </td>
+          <td>v0.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/cloudns/">ClouDNS</a>
+          </td>
+          <td><a href="https://www.cloudns.net" target="_blank">Website</a></td>
+          <td>
+            <code>cloudns</code>
+          </td>
+          <td>v2.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/cloudxns/">CloudXNS</a>
+          </td>
+          <td><a href="https://www.cloudxns.net/" target="_blank">Website</a></td>
+          <td>
+            <code>cloudxns</code>
+          </td>
+          <td>v0.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/conoha/">ConoHa</a>
+          </td>
+          <td><a href="https://www.conoha.jp/" target="_blank">Website</a></td>
+          <td>
+            <code>conoha</code>
+          </td>
+          <td>v1.2.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/constellix/">Constellix</a>
+          </td>
+          <td><a href="https://constellix.com" target="_blank">Website</a></td>
+          <td>
+            <code>constellix</code>
+          </td>
+          <td>v3.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/desec/">deSEC.io</a>
+          </td>
+          <td><a href="https://desec.io" target="_blank">Website</a></td>
+          <td>
+            <code>desec</code>
+          </td>
+          <td>v3.7.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/designate/">Designate DNSaaS for Openstack</a>
+          </td>
+          <td><a href="https://docs.openstack.org/designate/latest/" target="_blank">Website</a></td>
+          <td>
+            <code>designate</code>
+          </td>
+          <td>v2.2.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/digitalocean/">Digital Ocean</a>
+          </td>
+          <td><a href="https://www.digitalocean.com/docs/networking/dns/" target="_blank">Website</a></td>
+          <td>
+            <code>digitalocean</code>
+          </td>
+          <td>v0.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/dnsmadeeasy/">DNS Made Easy</a>
+          </td>
+          <td><a href="https://dnsmadeeasy.com/" target="_blank">Website</a></td>
+          <td>
+            <code>dnsmadeeasy</code>
+          </td>
+          <td>v0.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/dnsimple/">DNSimple</a>
+          </td>
+          <td><a href="https://dnsimple.com/" target="_blank">Website</a></td>
+          <td>
+            <code>dnsimple</code>
+          </td>
+          <td>v0.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/dnspod/">DNSPod (deprecated)</a>
+          </td>
+          <td><a href="https://www.dnspod.com/" target="_blank">Website</a></td>
+          <td>
+            <code>dnspod</code>
+          </td>
+          <td>v0.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/dode/">Domain Offensive (do.de)</a>
+          </td>
+          <td><a href="https://www.do.de/" target="_blank">Website</a></td>
+          <td>
+            <code>dode</code>
+          </td>
+          <td>v2.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/domeneshop/">Domeneshop</a>
+          </td>
+          <td><a href="https://domene.shop" target="_blank">Website</a></td>
+          <td>
+            <code>domeneshop</code>
+          </td>
+          <td>v4.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/dreamhost/">DreamHost</a>
+          </td>
+          <td><a href="https://www.dreamhost.com" target="_blank">Website</a></td>
+          <td>
+            <code>dreamhost</code>
+          </td>
+          <td>v1.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/duckdns/">Duck DNS</a>
+          </td>
+          <td><a href="https://www.duckdns.org/" target="_blank">Website</a></td>
+          <td>
+            <code>duckdns</code>
+          </td>
+          <td>v0.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/dyn/">Dyn</a>
+          </td>
+          <td><a href="https://dyn.com/" target="_blank">Website</a></td>
+          <td>
+            <code>dyn</code>
+          </td>
+          <td>v0.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/dynu/">Dynu</a>
+          </td>
+          <td><a href="https://www.dynu.com/" target="_blank">Website</a></td>
+          <td>
+            <code>dynu</code>
+          </td>
+          <td>v3.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/easydns/">EasyDNS</a>
+          </td>
+          <td><a href="https://easydns.com/" target="_blank">Website</a></td>
+          <td>
+            <code>easydns</code>
+          </td>
+          <td>v2.6.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/epik/">Epik</a>
+          </td>
+          <td><a href="https://www.epik.com/" target="_blank">Website</a></td>
+          <td>
+            <code>epik</code>
+          </td>
+          <td>v4.5.0</td>
+        </tr>
+      
+    
+    <tr>
+          <td>
+            <a href="/lego/dns/exoscale/">Exoscale</a>
+          </td>
+          <td><a href="https://www.exoscale.com/" target="_blank">Website</a></td>
+          <td>
+            <code>exoscale</code>
+          </td>
+          <td>v0.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/exec/">External program</a>
+          </td>
+          <td><a href="/dns/exec" target="_blank">Website</a></td>
+          <td>
+            <code>exec</code>
+          </td>
+          <td>v0.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/freemyip/">freemyip.com</a>
+          </td>
+          <td><a href="https://freemyip.com/" target="_blank">Website</a></td>
+          <td>
+            <code>freemyip</code>
+          </td>
+          <td>v4.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/gcore/">G-Core Labs</a>
+          </td>
+          <td><a href="https://gcorelabs.com/dns/" target="_blank">Website</a></td>
+          <td>
+            <code>gcore</code>
+          </td>
+          <td>v4.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/gandi/">Gandi</a>
+          </td>
+          <td><a href="https://www.gandi.net" target="_blank">Website</a></td>
+          <td>
+            <code>gandi</code>
+          </td>
+          <td>v0.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/gandiv5/">Gandi Live DNS (v5)</a>
+          </td>
+          <td><a href="https://www.gandi.net" target="_blank">Website</a></td>
+          <td>
+            <code>gandiv5</code>
+          </td>
+          <td>v0.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/glesys/">Glesys</a>
+          </td>
+          <td><a href="https://glesys.com/" target="_blank">Website</a></td>
+          <td>
+            <code>glesys</code>
+          </td>
+          <td>v0.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/godaddy/">Go Daddy</a>
+          </td>
+          <td><a href="https://godaddy.com" target="_blank">Website</a></td>
+          <td>
+            <code>godaddy</code>
+          </td>
+          <td>v0.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/gcloud/">Google Cloud</a>
+          </td>
+          <td><a href="https://cloud.google.com" target="_blank">Website</a></td>
+          <td>
+            <code>gcloud</code>
+          </td>
+          <td>v0.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/hetzner/">Hetzner</a>
+          </td>
+          <td><a href="https://hetzner.com" target="_blank">Website</a></td>
+          <td>
+            <code>hetzner</code>
+          </td>
+          <td>v3.7.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/hostingde/">Hosting.de</a>
+          </td>
+          <td><a href="https://www.hosting.de/" target="_blank">Website</a></td>
+          <td>
+            <code>hostingde</code>
+          </td>
+          <td>v1.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/hosttech/">Hosttech</a>
+          </td>
+          <td><a href="https://www.hosttech.eu/" target="_blank">Website</a></td>
+          <td>
+            <code>hosttech</code>
+          </td>
+          <td>v4.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/httpreq/">HTTP request</a>
+          </td>
+          <td><a href="/lego/dns/httpreq/" target="_blank">Website</a></td>
+          <td>
+            <code>httpreq</code>
+          </td>
+          <td>v2.0.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/hurricane/">Hurricane Electric DNS</a>
+          </td>
+          <td><a href="https://dns.he.net/" target="_blank">Website</a></td>
+          <td>
+            <code>hurricane</code>
+          </td>
+          <td>v4.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/hyperone/">HyperOne</a>
+          </td>
+          <td><a href="https://www.hyperone.com" target="_blank">Website</a></td>
+          <td>
+            <code>hyperone</code>
+          </td>
+          <td>v3.9.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/ibmcloud/">IBM Cloud (SoftLayer)</a>
+          </td>
+          <td><a href="https://www.ibm.com/cloud/" target="_blank">Website</a></td>
+          <td>
+            <code>ibmcloud</code>
+          </td>
+          <td>v4.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/iijdpf/">IIJ DNS Platform Service</a>
+          </td>
+          <td><a href="https://www.iij.ad.jp/en/biz/dns-pfm/" target="_blank">Website</a></td>
+          <td>
+            <code>iijdpf</code>
+          </td>
+          <td>v4.7.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/infoblox/">Infoblox</a>
+          </td>
+          <td><a href="https://www.infoblox.com/" target="_blank">Website</a></td>
+          <td>
+            <code>infoblox</code>
+          </td>
+          <td>v4.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/infomaniak/">Infomaniak</a>
+          </td>
+          <td><a href="https://www.infomaniak.com/" target="_blank">Website</a></td>
+          <td>
+            <code>infomaniak</code>
+          </td>
+          <td>v4.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/iij/">Internet Initiative Japan</a>
+          </td>
+          <td><a href="https://www.iij.ad.jp/en/" target="_blank">Website</a></td>
+          <td>
+            <code>iij</code>
+          </td>
+          <td>v1.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/internetbs/">Internet.bs</a>
+          </td>
+          <td><a href="https://internetbs.net" target="_blank">Website</a></td>
+          <td>
+            <code>internetbs</code>
+          </td>
+          <td>v4.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/inwx/">INWX</a>
+          </td>
+          <td><a href="https://www.inwx.de/en" target="_blank">Website</a></td>
+          <td>
+            <code>inwx</code>
+          </td>
+          <td>v2.0.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/ionos/">Ionos</a>
+          </td>
+          <td><a href="https://ionos.com" target="_blank">Website</a></td>
+          <td>
+            <code>ionos</code>
+          </td>
+          <td>v4.2.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/iwantmyname/">iwantmyname</a>
+          </td>
+          <td><a href="https://iwantmyname.com" target="_blank">Website</a></td>
+          <td>
+            <code>iwantmyname</code>
+          </td>
+          <td>v4.7.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/joker/">Joker</a>
+          </td>
+          <td><a href="https://joker.com" target="_blank">Website</a></td>
+          <td>
+            <code>joker</code>
+          </td>
+          <td>v2.6.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/acme-dns/">Joohoi&#39;s ACME-DNS</a>
+          </td>
+          <td><a href="https://github.com/joohoi/acme-dns" target="_blank">Website</a></td>
+          <td>
+            <code>acme-dns</code>
+          </td>
+          <td>v1.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/liara/">Liara</a>
+          </td>
+          <td><a href="https://liara.ir" target="_blank">Website</a></td>
+          <td>
+            <code>liara</code>
+          </td>
+          <td>v4.10.0</td>
+        </tr>
+      
+    
+    <tr>
+          <td>
+            <a href="/lego/dns/linode/">Linode (v4)</a>
+          </td>
+          <td><a href="https://www.linode.com/" target="_blank">Website</a></td>
+          <td>
+            <code>linode</code>
+          </td>
+          <td>v1.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/liquidweb/">Liquid Web</a>
+          </td>
+          <td><a href="https://liquidweb.com" target="_blank">Website</a></td>
+          <td>
+            <code>liquidweb</code>
+          </td>
+          <td>v3.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/loopia/">Loopia</a>
+          </td>
+          <td><a href="https://loopia.com" target="_blank">Website</a></td>
+          <td>
+            <code>loopia</code>
+          </td>
+          <td>v4.2.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/luadns/">LuaDNS</a>
+          </td>
+          <td><a href="https://luadns.com" target="_blank">Website</a></td>
+          <td>
+            <code>luadns</code>
+          </td>
+          <td>v3.7.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/manual/">Manual</a>
+          </td>
+          <td></td>
+          <td>
+            <code>manual</code>
+          </td>
+          <td>v0.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/mydnsjp/">MyDNS.jp</a>
+          </td>
+          <td><a href="https://www.mydns.jp" target="_blank">Website</a></td>
+          <td>
+            <code>mydnsjp</code>
+          </td>
+          <td>v1.2.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/mythicbeasts/">MythicBeasts</a>
+          </td>
+          <td><a href="https://www.mythic-beasts.com/" target="_blank">Website</a></td>
+          <td>
+            <code>mythicbeasts</code>
+          </td>
+          <td>v0.3.7</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/namedotcom/">Name.com</a>
+          </td>
+          <td><a href="https://www.name.com" target="_blank">Website</a></td>
+          <td>
+            <code>namedotcom</code>
+          </td>
+          <td>v0.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/namecheap/">Namecheap</a>
+          </td>
+          <td><a href="https://www.namecheap.com" target="_blank">Website</a></td>
+          <td>
+            <code>namecheap</code>
+          </td>
+          <td>v0.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/namesilo/">Namesilo</a>
+          </td>
+          <td><a href="https://www.namesilo.com/" target="_blank">Website</a></td>
+          <td>
+            <code>namesilo</code>
+          </td>
+          <td>v2.7.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/nearlyfreespeech/">NearlyFreeSpeech.NET</a>
+          </td>
+          <td><a href="https://nearlyfreespeech.net/" target="_blank">Website</a></td>
+          <td>
+            <code>nearlyfreespeech</code>
+          </td>
+          <td>v4.8.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/netcup/">Netcup</a>
+          </td>
+          <td><a href="https://www.netcup.eu/" target="_blank">Website</a></td>
+          <td>
+            <code>netcup</code>
+          </td>
+          <td>v1.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/netlify/">Netlify</a>
+          </td>
+          <td><a href="https://www.netlify.com" target="_blank">Website</a></td>
+          <td>
+            <code>netlify</code>
+          </td>
+          <td>v3.7.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/nicmanager/">Nicmanager</a>
+          </td>
+          <td><a href="https://www.nicmanager.com/" target="_blank">Website</a></td>
+          <td>
+            <code>nicmanager</code>
+          </td>
+          <td>v4.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/nifcloud/">NIFCloud</a>
+          </td>
+          <td><a href="https://www.nifcloud.com/" target="_blank">Website</a></td>
+          <td>
+            <code>nifcloud</code>
+          </td>
+          <td>v1.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/njalla/">Njalla</a>
+          </td>
+          <td><a href="https://njal.la" target="_blank">Website</a></td>
+          <td>
+            <code>njalla</code>
+          </td>
+          <td>v4.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/ns1/">NS1</a>
+          </td>
+          <td><a href="https://ns1.com" target="_blank">Website</a></td>
+          <td>
+            <code>ns1</code>
+          </td>
+          <td>v0.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/otc/">Open Telekom Cloud</a>
+          </td>
+          <td><a href="https://cloud.telekom.de/en" target="_blank">Website</a></td>
+          <td>
+            <code>otc</code>
+          </td>
+          <td>v0.4.1</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/oraclecloud/">Oracle Cloud</a>
+          </td>
+          <td><a href="https://cloud.oracle.com/home" target="_blank">Website</a></td>
+          <td>
+            <code>oraclecloud</code>
+          </td>
+          <td>v2.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/ovh/">OVH</a>
+          </td>
+          <td><a href="https://www.ovh.com/" target="_blank">Website</a></td>
+          <td>
+            <code>ovh</code>
+          </td>
+          <td>v0.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/porkbun/">Porkbun</a>
+          </td>
+          <td><a href="https://porkbun.com/" target="_blank">Website</a></td>
+          <td>
+            <code>porkbun</code>
+          </td>
+          <td>v4.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/pdns/">PowerDNS</a>
+          </td>
+          <td><a href="https://www.powerdns.com/" target="_blank">Website</a></td>
+          <td>
+            <code>pdns</code>
+          </td>
+          <td>v0.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/rackspace/">Rackspace</a>
+          </td>
+          <td><a href="https://www.rackspace.com/" target="_blank">Website</a></td>
+          <td>
+            <code>rackspace</code>
+          </td>
+          <td>v0.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/regru/">reg.ru</a>
+          </td>
+          <td><a href="https://www.reg.ru/" target="_blank">Website</a></td>
+          <td>
+            <code>regru</code>
+          </td>
+          <td>v3.5.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/rfc2136/">RFC2136</a>
+          </td>
+          <td><a href="https://www.rfc-editor.org/rfc/rfc2136.html" target="_blank">Website</a></td>
+          <td>
+            <code>rfc2136</code>
+          </td>
+          <td>v0.3.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/rimuhosting/">RimuHosting</a>
+          </td>
+          <td><a href="https://rimuhosting.com" target="_blank">Website</a></td>
+          <td>
+            <code>rimuhosting</code>
+          </td>
+          <td>v0.3.5</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/sakuracloud/">Sakura Cloud</a>
+          </td>
+          <td><a href="https://cloud.sakura.ad.jp/" target="_blank">Website</a></td>
+          <td>
+            <code>sakuracloud</code>
+          </td>
+          <td>v1.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/scaleway/">Scaleway</a>
+          </td>
+          <td><a href="https://developers.scaleway.com/" target="_blank">Website</a></td>
+          <td>
+            <code>scaleway</code>
+          </td>
+          <td>v3.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/selectel/">Selectel</a>
+          </td>
+          <td><a href="https://kb.selectel.com/" target="_blank">Website</a></td>
+          <td>
+            <code>selectel</code>
+          </td>
+          <td>v1.2.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/servercow/">Servercow</a>
+          </td>
+          <td><a href="https://servercow.de/" target="_blank">Website</a></td>
+          <td>
+            <code>servercow</code>
+          </td>
+          <td>v3.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/simply/">Simply.com</a>
+          </td>
+          <td><a href="https://www.simply.com/en/domains/" target="_blank">Website</a></td>
+          <td>
+            <code>simply</code>
+          </td>
+          <td>v4.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/sonic/">Sonic</a>
+          </td>
+          <td><a href="https://www.sonic.com/" target="_blank">Website</a></td>
+          <td>
+            <code>sonic</code>
+          </td>
+          <td>v4.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/stackpath/">Stackpath</a>
+          </td>
+          <td><a href="https://www.stackpath.com/" target="_blank">Website</a></td>
+          <td>
+            <code>stackpath</code>
+          </td>
+          <td>v1.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/tencentcloud/">Tencent Cloud DNS</a>
+          </td>
+          <td><a href="https://cloud.tencent.com/product/cns" target="_blank">Website</a></td>
+          <td>
+            <code>tencentcloud</code>
+          </td>
+          <td>v4.6.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/transip/">TransIP</a>
+          </td>
+          <td><a href="https://www.transip.nl/" target="_blank">Website</a></td>
+          <td>
+            <code>transip</code>
+          </td>
+          <td>v2.0.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/safedns/">UKFast SafeDNS</a>
+          </td>
+          <td><a href="https://www.ukfast.co.uk/dns-hosting.html" target="_blank">Website</a></td>
+          <td>
+            <code>safedns</code>
+          </td>
+          <td>v4.6.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/variomedia/">Variomedia</a>
+          </td>
+          <td><a href="https://www.variomedia.de/" target="_blank">Website</a></td>
+          <td>
+            <code>variomedia</code>
+          </td>
+          <td>v4.8.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/vegadns/">VegaDNS</a>
+          </td>
+          <td><a href="https://github.com/shupp/VegaDNS-API" target="_blank">Website</a></td>
+          <td>
+            <code>vegadns</code>
+          </td>
+          <td>v1.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/vercel/">Vercel</a>
+          </td>
+          <td><a href="https://vercel.com" target="_blank">Website</a></td>
+          <td>
+            <code>vercel</code>
+          </td>
+          <td>v4.7.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/versio/">Versio.[nl|eu|uk]</a>
+          </td>
+          <td><a href="https://www.versio.nl/domeinnamen" target="_blank">Website</a></td>
+          <td>
+            <code>versio</code>
+          </td>
+          <td>v2.7.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/vinyldns/">VinylDNS</a>
+          </td>
+          <td><a href="https://www.vinyldns.io" target="_blank">Website</a></td>
+          <td>
+            <code>vinyldns</code>
+          </td>
+          <td>v4.4.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/vkcloud/">VK Cloud</a>
+          </td>
+          <td><a href="https://mcs.mail.ru/" target="_blank">Website</a></td>
+          <td>
+            <code>vkcloud</code>
+          </td>
+          <td>v4.9.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/vscale/">Vscale</a>
+          </td>
+          <td><a href="https://vscale.io/" target="_blank">Website</a></td>
+          <td>
+            <code>vscale</code>
+          </td>
+          <td>v2.0.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/vultr/">Vultr</a>
+          </td>
+          <td><a href="https://www.vultr.com/" target="_blank">Website</a></td>
+          <td>
+            <code>vultr</code>
+          </td>
+          <td>v0.3.1</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/wedos/">WEDOS</a>
+          </td>
+          <td><a href="https://www.wedos.com" target="_blank">Website</a></td>
+          <td>
+            <code>wedos</code>
+          </td>
+          <td>v4.4.0</td>
+        </tr>
+      
+    
+    
+    <tr>
+          <td>
+            <a href="/lego/dns/yandexcloud/">Yandex Cloud</a>
+          </td>
+          <td><a href="https://cloud.yandex.com" target="_blank">Website</a></td>
+          <td>
+            <code>yandexcloud</code>
+          </td>
+          <td>v4.9.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/yandex/">Yandex PDD</a>
+          </td>
+          <td><a href="https://pdd.yandex.com" target="_blank">Website</a></td>
+          <td>
+            <code>yandex</code>
+          </td>
+          <td>v3.7.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/zoneee/">Zone.ee</a>
+          </td>
+          <td><a href="https://www.zone.ee/" target="_blank">Website</a></td>
+          <td>
+            <code>zoneee</code>
+          </td>
+          <td>v2.1.0</td>
+        </tr>
+      
+    <tr>
+          <td>
+            <a href="/lego/dns/zonomi/">Zonomi</a>
+          </td>
+          <td><a href="https://zonomi.com" target="_blank">Website</a></td>
+          <td>
+            <code>zonomi</code>
+          </td>
+          <td>v3.5.0</td>
+        </tr>
+      
+    
+    
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+<footer class=" footline" >
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2923,6 +4211,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2935,6 +4224,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +5979,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/usage/library/writing-a-challenge-solver/" title="Writing a Challenge Solver"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/dns/edgedns/" title="Akamai EdgeDNS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -4720,4 +6014,3 @@
 
   </body>
 </html>
-

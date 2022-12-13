@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>General Instructions :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
     <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/usage/cli/general-instructions/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -107,7 +107,7 @@
   
     
     <li data-nav-id="/lego/usage/" title="Usage" class="dd-item
-        
+        parent
         
         
         ">
@@ -138,7 +138,7 @@
   
     
     <li data-nav-id="/lego/usage/cli/" title="CLI" class="dd-item
-        
+        parent
         
         
         ">
@@ -166,7 +166,7 @@
  
   
     
-      <li data-nav-id="/lego/usage/cli/general-instructions/" title="General Instructions" class="dd-item ">
+      <li data-nav-id="/lego/usage/cli/general-instructions/" title="General Instructions" class="dd-item active">
         <a href="/lego/usage/cli/general-instructions/">
         General Instructions
         <i class="fas fa-check read-icon"></i>
@@ -2696,48 +2696,88 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/usage/'>Usage</a> > <a href='/lego/usage/cli/'>CLI</a> > General Instructions
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              General Instructions
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
-<ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
-<ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
-</ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
-</ul>
+<p>These examples assume you have <a href="/lego/installation/">lego installed</a>.
+You can get a pre-built binary from the <a href="https://github.com/go-acme/lego/releases">releases</a> page.</p>
+<p>The web server examples require that the <code>lego</code> binary has permission to bind to ports 80 and 443.
+If your environment does not allow you to bind to these ports, please read <a href="/lego/usage/cli/options/#running-without-root-privileges">Running without root privileges</a> and <a href="/lego/usage/cli/options/#port-usage">Port Usage</a>.</p>
+<p>Unless otherwise instructed with the <code>--path</code> command line flag, lego will look for a directory named <code>.lego</code> in the <em>current working directory</em>.
+If you run <code>cd /dir/a &amp;&amp; lego ... run</code>, lego will create a directory <code>/dir/a/.lego</code> where it will save account registration and certificate files into.
+If you later try to renew a certificate with <code>cd /dir/b &amp;&amp; lego ... renew</code>, lego will likely produce an error.</p>
+
+
+<footer class="footline">
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2788,6 +2828,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2803,6 +2844,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2815,6 +2857,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -2831,6 +2874,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4733,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/usage/cli/" title="CLI"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/usage/cli/obtain-a-certificate/" title="Obtain a Certificate" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

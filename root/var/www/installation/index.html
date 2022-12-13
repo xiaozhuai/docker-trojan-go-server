@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>Installation :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
     <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/installation/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -82,7 +82,7 @@
     
     <li data-nav-id="/lego/installation/" title="Installation" class="dd-item
         
-        
+        active
         
         ">
       <a href="/lego/installation/">
@@ -2696,48 +2696,111 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > Installation
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#binaries">Binaries</a></li>
+    <li><a href="#from-docker">From Docker</a></li>
+    <li><a href="#from-package-managers">From package managers</a></li>
+    <li><a href="#from-sources">From sources</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Installation
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
+
+	<h2 id="binaries">Binaries</h2>
+<p>To get the binary just download the latest release for your OS/Arch from <a href="https://github.com/go-acme/lego/releases">the release page</a> and put the binary somewhere convenient.
+lego does not assume anything about the location you run it from.</p>
+<h2 id="from-docker">From Docker</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run goacme/lego -h
+</span></span></code></pre></div><h2 id="from-package-managers">From package managers</h2>
 <ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
+<li>
+<p><a href="https://aur.archlinux.org/packages/lego">ArchLinux (AUR)</a> (official):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yay -S lego
+</span></span></code></pre></div></li>
+<li>
+<p><a href="https://www.freshports.org/security/lego">FreeBSD (Ports)</a> (unofficial):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/ports/security/lego <span class="o">&amp;&amp;</span> make install clean
+</span></span></code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pkg install lego
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="from-sources">From sources</h2>
+<p>Requirements:</p>
 <ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
+<li>go1.17+</li>
+<li>environment variable: <code>GO111MODULE=on</code></li>
 </ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
-</ul>
+<p>To install the latest version from sources, just run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">go install github.com/go-acme/lego/v4/cmd/lego@latest
+</span></span></code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone git@github.com:go-acme/lego.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> lego
+</span></span><span class="line"><span class="cl">make        <span class="c1"># tests + doc + build</span>
+</span></span><span class="line"><span class="cl">make build  <span class="c1"># only build</span>
+</span></span></code></pre></div>
+
+
+
+
+<footer class=" footline" >
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2769,8 +2832,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -2787,6 +2848,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4751,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/" title="Welcome"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/usage/" title="Usage" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -4720,4 +4786,3 @@
 
   </body>
 </html>
-

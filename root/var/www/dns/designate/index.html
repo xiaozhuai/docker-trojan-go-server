@@ -9,25 +9,25 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>Designate DNSaaS for Openstack :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
-    <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/fontawesome-all.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hybrid.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/featherlight.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/perfect-scrollbar.min.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/auto-complete.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/atom-one-dark-reasonable.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/theme.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/tabs.css?1670667468" rel="stylesheet">
-    <link href="/lego/css/hugo-theme.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/nucleus.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/fontawesome-all.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hybrid.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/featherlight.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/perfect-scrollbar.min.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/auto-complete.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/atom-one-dark-reasonable.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/theme.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/tabs.css?1670667467" rel="stylesheet">
+    <link href="/lego/css/hugo-theme.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-blue.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-blue.css?1670667467" rel="stylesheet">
     
-    <link href="/lego/css/theme-custom.css?1670667468" rel="stylesheet">
+    <link href="/lego/css/theme-custom.css?1670667467" rel="stylesheet">
 
-    <script src="/lego/js/jquery-3.3.1.min.js?1670667468"></script>
+    <script src="/lego/js/jquery-3.3.1.min.js?1670667467"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/dns/designate/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/lego/js/lunr.min.js?1670667468"></script>
-<script type="text/javascript" src="/lego/js/auto-complete.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/lunr.min.js?1670667467"></script>
+<script type="text/javascript" src="/lego/js/auto-complete.js?1670667467"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/go-acme.github.io\/lego\/";
     
 </script>
-<script type="text/javascript" src="/lego/js/search.js?1670667468"></script>
+<script type="text/javascript" src="/lego/js/search.js?1670667467"></script>
 
     
   </div>
@@ -329,7 +329,7 @@
   
     
     <li data-nav-id="/lego/dns/" title="DNS Providers" class="dd-item
-        
+        parent
         
         
         ">
@@ -777,7 +777,7 @@
  
   
     
-      <li data-nav-id="/lego/dns/designate/" title="Designate DNSaaS for Openstack" class="dd-item ">
+      <li data-nav-id="/lego/dns/designate/" title="Designate DNSaaS for Openstack" class="dd-item active">
         <a href="/lego/dns/designate/">
         Designate DNSaaS for Openstack
         <i class="fas fa-check read-icon"></i>
@@ -2696,48 +2696,214 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/dns/'>DNS Providers</a> > Designate DNSaaS for Openstack
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#additional-configuration">Additional Configuration</a></li>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#more-information">More information</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Designate DNSaaS for Openstack
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Configuration for <a href="https://docs.openstack.org/designate/latest/">Designate DNSaaS for Openstack</a>.</p>
 <ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
+<li>Code: <code>designate</code></li>
+<li>Since: v2.2.0</li>
+</ul>
+<p>Here is an example bash command using the Designate DNSaaS for Openstack provider:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With a `clouds.yaml`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OS_CLOUD</span><span class="o">=</span>my_openstack <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>lego --email you@example.com --dns designate --domains my.example.org run
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># or</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">OS_AUTH_URL</span><span class="o">=</span>https://openstack.example.org <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">OS_REGION_NAME</span><span class="o">=</span>RegionOne <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">OS_PROJECT_ID</span><span class="o">=</span>23d4522a987d4ab529f722a007c27846
+</span></span><span class="line"><span class="cl"><span class="nv">OS_USERNAME</span><span class="o">=</span>myuser <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">OS_PASSWORD</span><span class="o">=</span>passw0rd <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>lego --email you@example.com --dns designate --domains my.example.org run
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># or</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">OS_AUTH_URL</span><span class="o">=</span>https://openstack.example.org <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">OS_REGION_NAME</span><span class="o">=</span>RegionOne <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">OS_AUTH_TYPE</span><span class="o">=</span>v3applicationcredential <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">OS_APPLICATION_CREDENTIAL_ID</span><span class="o">=</span>imn74uq0or7dyzz20dwo1ytls4me8dry <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">OS_APPLICATION_CREDENTIAL_SECRET</span><span class="o">=</span>68FuSPSdQqkFQYH5X1OoriEIJOwyLtQ8QSqXZOc9XxFK1A9tzZT6He2PfPw0OMja <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>lego --email you@example.com --dns designate --domains my.example.org run
+</span></span></code></pre></div><h2 id="credentials">Credentials</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OS_APPLICATION_CREDENTIAL_ID</code></td>
+<td>Application credential ID</td>
+</tr>
+<tr>
+<td><code>OS_APPLICATION_CREDENTIAL_NAME</code></td>
+<td>Application credential name</td>
+</tr>
+<tr>
+<td><code>OS_APPLICATION_CREDENTIAL_SECRET</code></td>
+<td>Application credential secret</td>
+</tr>
+<tr>
+<td><code>OS_AUTH_URL</code></td>
+<td>Identity endpoint URL</td>
+</tr>
+<tr>
+<td><code>OS_PASSWORD</code></td>
+<td>Password</td>
+</tr>
+<tr>
+<td><code>OS_PROJECT_NAME</code></td>
+<td>Project name</td>
+</tr>
+<tr>
+<td><code>OS_REGION_NAME</code></td>
+<td>Region name</td>
+</tr>
+<tr>
+<td><code>OS_USERNAME</code></td>
+<td>Username</td>
+</tr>
+<tr>
+<td><code>OS_USER_ID</code></td>
+<td>User ID</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="additional-configuration">Additional Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DESIGNATE_POLLING_INTERVAL</code></td>
+<td>Time between DNS propagation check</td>
+</tr>
+<tr>
+<td><code>DESIGNATE_PROPAGATION_TIMEOUT</code></td>
+<td>Maximum waiting time for DNS propagation</td>
+</tr>
+<tr>
+<td><code>DESIGNATE_TTL</code></td>
+<td>The TTL of the TXT record used for the DNS challenge</td>
+</tr>
+<tr>
+<td><code>OS_PROJECT_ID</code></td>
+<td>Project ID</td>
+</tr>
+<tr>
+<td><code>OS_TENANT_NAME</code></td>
+<td>Tenant name (deprecated see OS_PROJECT_NAME and OS_PROJECT_ID)</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="description">Description</h2>
+<p>There are three main ways of authenticating with Designate:</p>
+<ol>
+<li>The first one is by using the <code>OS_CLOUD</code> environment variable and a <code>clouds.yaml</code> file.</li>
+<li>The second one is using your username and password, via the <code>OS_USERNAME</code>, <code>OS_PASSWORD</code> and <code>OS_PROJECT_NAME</code> environment variables.</li>
+<li>The third one is by using an application credential, via the <code>OS_APPLICATION_CREDENTIAL_*</code> and <code>OS_USER_ID</code> environment variables.</li>
+</ol>
+<p>For the username/password and application methods, the <code>OS_AUTH_URL</code> and <code>OS_REGION_NAME</code> environment variables are required.</p>
+<p>For more information, you can read about the different methods of authentication with OpenStack in the Keystone&rsquo;s documentation and the gophercloud documentation:</p>
 <ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
+<li><a href="https://docs.openstack.org/keystone/latest/user/supported_clients.html">Keystone username/password</a></li>
+<li><a href="https://docs.openstack.org/keystone/latest/user/application_credentials.html">Keystone application credentials</a></li>
 </ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
+<h2 id="more-information">More information</h2>
+<ul>
+<li><a href="https://docs.openstack.org/designate/latest/">API documentation</a></li>
+<li><a href="https://godoc.org/github.com/gophercloud/gophercloud/openstack/dns/v2">Go client</a></li>
 </ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+<footer class="footline">
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2923,6 +3089,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2935,6 +3102,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -3256,6 +3426,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -3271,6 +3442,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4861,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/dns/desec/" title="deSEC.io"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/dns/digitalocean/" title="Digital Ocean" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -4698,19 +4874,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/lego/js/clipboard.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.min.js?1670667468"></script>
-    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667468"></script>
-    <script src="/lego/js/jquery.sticky.js?1670667468"></script>
-    <script src="/lego/js/featherlight.min.js?1670667468"></script>
-    <script src="/lego/js/highlight.pack.js?1670667468"></script>
+    <script src="/lego/js/clipboard.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.min.js?1670667467"></script>
+    <script src="/lego/js/perfect-scrollbar.jquery.min.js?1670667467"></script>
+    <script src="/lego/js/jquery.sticky.js?1670667467"></script>
+    <script src="/lego/js/featherlight.min.js?1670667467"></script>
+    <script src="/lego/js/highlight.pack.js?1670667467"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667468"></script>
-    <script src="/lego/js/learn.js?1670667468"></script>
-    <script src="/lego/js/hugo-learn.js?1670667468"></script>
+    <script src="/lego/js/modernizr.custom-3.6.0.js?1670667467"></script>
+    <script src="/lego/js/learn.js?1670667467"></script>
+    <script src="/lego/js/hugo-learn.js?1670667467"></script>
     
         
-            <script src="/lego/mermaid/mermaid.js?1670667468"></script>
+            <script src="/lego/mermaid/mermaid.js?1670667467"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/lego/images/favicon.png" type="image/png">
 
-    <title>Welcome :: Let’s Encrypt client and ACME library written in Go.</title>
+    <title>Yandex Cloud :: Let’s Encrypt client and ACME library written in Go.</title>
 
     
     <link href="/lego/css/nucleus.css?1670667468" rel="stylesheet">
@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/lego/">
+  <body class="" data-url="/lego/dns/yandexcloud/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -329,7 +329,7 @@
   
     
     <li data-nav-id="/lego/dns/" title="DNS Providers" class="dd-item
-        
+        parent
         
         
         ">
@@ -2562,7 +2562,7 @@
  
   
     
-      <li data-nav-id="/lego/dns/yandexcloud/" title="Yandex Cloud" class="dd-item ">
+      <li data-nav-id="/lego/dns/yandexcloud/" title="Yandex Cloud" class="dd-item active">
         <a href="/lego/dns/yandexcloud/">
         Yandex Cloud
         <i class="fas fa-check read-icon"></i>
@@ -2696,48 +2696,164 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/lego/'>Welcome</a> > <a href='/lego/dns/'>DNS Providers</a> > Yandex Cloud
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#additional-configuration">Additional Configuration</a></li>
+    <li><a href="#iam-token">IAM Token</a></li>
+    <li><a href="#more-information">More information</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Yandex Cloud
+            </h1>
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="lego">Lego</h1>
-<p>Let&rsquo;s Encrypt client and ACME library written in Go.</p>
-<h2 id="features">Features</h2>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Configuration for <a href="https://cloud.yandex.com">Yandex Cloud</a>.</p>
 <ul>
-<li>ACME v2 <a href="https://www.rfc-editor.org/rfc/rfc8555.html">RFC 8555</a></li>
-<li>Register with CA</li>
-<li>Obtain certificates, both from scratch or with an existing CSR</li>
-<li>Renew certificates</li>
-<li>Revoke certificates</li>
-<li>Robust implementation of all ACME challenges
+<li>Code: <code>yandexcloud</code></li>
+<li>Since: v4.9.0</li>
+</ul>
+<p>Here is an example bash command using the Yandex Cloud provider:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">YANDEX_CLOUD_IAM_TOKEN</span><span class="o">=</span>&lt;base64_IAM_token&gt; <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">YANDEX_CLOUD_FOLDER_ID</span><span class="o">=</span>&lt;folder/project_id&gt; <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>lego --email you@example.com --dns yandexcloud --domains <span class="s2">&#34;example.org&#34;</span> --domains <span class="s2">&#34;*.example.org&#34;</span> run
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ---</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">YANDEX_CLOUD_IAM_TOKEN</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s1">&#39;{ \
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;id&#34;: &#34;&lt;string id&gt;&#34;, \
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;service_account_id&#34;: &#34;&lt;string id&gt;&#34;, \
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;created_at&#34;: &#34;&lt;datetime&gt;&#34;, \
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;key_algorithm&#34;: &#34;RSA_2048&#34;, \
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;public_key&#34;: &#34;-----BEGIN PUBLIC KEY-----&lt;rsa public key&gt;-----END PUBLIC KEY-----&#34;, \
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &#34;private_key&#34;: &#34;-----BEGIN PRIVATE KEY-----&lt;rsa private key&gt;-----END PRIVATE KEY-----&#34; \
+</span></span></span><span class="line"><span class="cl"><span class="s1">}&#39;</span> <span class="p">|</span> base64<span class="k">)</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span><span class="nv">YANDEX_CLOUD_FOLDER_ID</span><span class="o">=</span>&lt;yandex cloud folder<span class="o">(</span>project<span class="o">)</span> id&gt; <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>lego --email you@example.com --dns yandexcloud --domains <span class="s2">&#34;example.org&#34;</span> --domains <span class="s2">&#34;*.example.org&#34;</span> run
+</span></span></code></pre></div><h2 id="credentials">Credentials</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>YANDEX_CLOUD_FOLDER_ID</code></td>
+<td>The string id of folder (aka project) in Yandex Cloud</td>
+</tr>
+<tr>
+<td><code>YANDEX_CLOUD_IAM_TOKEN</code></td>
+<td>The base64 encoded json which contains inforamtion about iam token of serivce account with <code>dns.admin</code> permissions</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="additional-configuration">Additional Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>Environment Variable Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>YANDEX_CLOUD_POLLING_INTERVAL</code></td>
+<td>Time between DNS propagation check</td>
+</tr>
+<tr>
+<td><code>YANDEX_CLOUD_PROPAGATION_TIMEOUT</code></td>
+<td>Maximum waiting time for DNS propagation</td>
+</tr>
+<tr>
+<td><code>YANDEX_CLOUD_TTL</code></td>
+<td>The TTL of the TXT record used for the DNS challenge</td>
+</tr>
+</tbody>
+</table>
+<p>The environment variable names can be suffixed by <code>_FILE</code> to reference a file instead of a value.
+More information <a href="/lego/dns/#configuration-and-credentials">here</a>.</p>
+<h2 id="iam-token">IAM Token</h2>
+<p>The simplest way to retrieve IAM access token is usage of yc-cli,
+follow <a href="https://cloud.yandex.ru/docs/iam/operations/iam-token/create-for-sa">docs</a> to get it</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yc iam key create --service-account-name my-robot --output key.json
+</span></span><span class="line"><span class="cl">cat key.json <span class="p">|</span> base64
+</span></span></code></pre></div><h2 id="more-information">More information</h2>
 <ul>
-<li>HTTP (http-01)</li>
-<li>DNS (dns-01)</li>
-<li>TLS (tls-alpn-01)</li>
+<li><a href="https://cloud.yandex.com/en/docs/dns/quickstart">API documentation</a></li>
 </ul>
-</li>
-<li>SAN certificate support</li>
-<li>Comes with multiple optional <a href="/lego/dns/">DNS providers</a></li>
-<li><a href="/lego/usage/library/writing-a-challenge-solver/">Custom challenge solvers</a></li>
-<li>Certificate bundling</li>
-<li>OCSP helper function</li>
-</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+<footer class="footline">
 	
-  
-        
-            </div> 
+</footer>
+
         
         </div>
         
@@ -2923,6 +3039,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -2935,6 +3052,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4616,6 +4736,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -4631,6 +4752,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -4687,8 +4811,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/lego/dns/wedos/" title="WEDOS"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/lego/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/lego/dns/yandex/" title="Yandex PDD" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
