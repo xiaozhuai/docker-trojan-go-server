@@ -6,12 +6,8 @@ function endsWith(str, suffix) {
 
 // Initialize lunrjs using our generated index file
 function initLunr() {
-    if (!endsWith(baseurl,"/")){
-        baseurl = baseurl+'/'
-    };
-
     // First retrieve the index file
-    $.getJSON(baseurl +"index.json")
+    $.getJSON("/index.json")
         .done(function(index) {
             pagesIndex = index;
             // Set up lunrjs by declaring the fields we use
