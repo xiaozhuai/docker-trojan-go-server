@@ -27,13 +27,15 @@ RUN set -ex \
     && update-ca-certificates \
     && rm -rf /var/www/* \
     && rm -rf /etc/nginx/http.d/* \
-    && mkdir /etc/trojan-go
+    && mkdir /etc/trojan-go \
+    && mkdir /etc/lego
 
 COPY --from=builder /code/trojan-go/build/trojan-go /usr/bin/trojan-go
 COPY --from=builder /usr/share/trojan-go /usr/share/trojan-go
 COPY --from=xiaozhuai/lego-alpine:latest /usr/bin/lego /usr/bin/lego
 COPY root/ /
 
+ENV LEGO_PATH="/etc/lego"
 ENV LEGO_EMAIL=""
 ENV LEGO_CHALLENGE_OPTIONS="--http --http.webroot /var/www"
 ENV TROJAN_DOMAIN=""
