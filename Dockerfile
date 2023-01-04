@@ -12,7 +12,7 @@ RUN set -ex \
     && wget https://github.com/v2fly/geoip/raw/release/geoip-only-cn-private.dat -O /usr/share/trojan-go/geoip-only-cn-private.dat \
     && mkdir /code \
     && cd /code \
-    && git clone https://github.com/p4gefau1t/trojan-go \
+    && git clone --depth=1 "https://github.com/p4gefau1t/trojan-go" \
     && cd /code/trojan-go \
     && go mod download
 
