@@ -1,7 +1,7 @@
 FROM golang:alpine AS builder
 
-ENV GO111MODULE on
-ENV CGO_ENABLED 0
+ENV GO111MODULE=on
+ENV CGO_ENABLED=0
 
 RUN apk --no-cache add make git wget
 
@@ -35,12 +35,12 @@ COPY --from=builder /usr/share/trojan-go /usr/share/trojan-go
 COPY --from=xiaozhuai/lego-alpine:latest /usr/bin/lego /usr/bin/lego
 COPY root/ /
 
-ENV LEGO_PATH               "/etc/lego"
-ENV LEGO_EMAIL              ""
-ENV LEGO_CHALLENGE_OPTIONS  "--http --http.webroot /var/www"
-ENV TROJAN_DOMAIN           ""
-ENV TROJAN_PASSWORD         ""
-ENV TROJAN_WS_PATH          ""
+ENV LEGO_PATH="/etc/lego"
+ENV LEGO_EMAIL=""
+ENV LEGO_CHALLENGE_OPTIONS="--http --http.webroot /var/www"
+ENV TROJAN_DOMAIN=""
+ENV TROJAN_PASSWORD=""
+ENV TROJAN_WS_PATH=""
 
 EXPOSE 80
 EXPOSE 443
